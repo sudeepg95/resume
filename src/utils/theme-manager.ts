@@ -92,7 +92,7 @@ class ThemeManager {
 
     root.setAttribute('data-theme', this.currentVariant);
     root.setAttribute('data-mode', this.currentMode);
-    
+
     if (this.currentMode === 'dark') {
       root.classList.add('dark');
     } else {
@@ -133,13 +133,15 @@ class ThemeManager {
 
   private loadSavedSettings() {
     try {
-      const savedVariant = localStorage.getItem('cv-theme-variant') as ThemeVariant;
+      const savedVariant = localStorage.getItem(
+        'cv-theme-variant'
+      ) as ThemeVariant;
       const savedMode = localStorage.getItem('cv-color-mode') as ColorMode;
-      
+
       if (savedVariant && Object.keys(THEME_CONFIGS).includes(savedVariant)) {
         this.currentVariant = savedVariant;
       }
-      
+
       if (savedMode && ['light', 'dark'].includes(savedMode)) {
         this.currentMode = savedMode;
       }
@@ -159,10 +161,12 @@ class ThemeManager {
 
   private detectSystemMode() {
     if (typeof window === 'undefined') return;
-    
+
     const savedMode = localStorage.getItem('cv-color-mode');
     if (!savedMode) {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const prefersDark = window.matchMedia(
+        '(prefers-color-scheme: dark)'
+      ).matches;
       this.currentMode = prefersDark ? 'dark' : 'light';
     }
   }
@@ -186,10 +190,10 @@ class ThemeManager {
 
     window.dispatchEvent(
       new CustomEvent('themeChange', {
-        detail: { 
+        detail: {
           variant: this.currentVariant,
           mode: this.currentMode,
-          config: this.getThemeConfig()
+          config: this.getThemeConfig(),
         },
       })
     );

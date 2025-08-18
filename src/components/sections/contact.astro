@@ -1,4 +1,6 @@
 ---
+import { Icon } from 'astro-icon/components';
+
 interface Props {
   email: string;
   phone?: string;
@@ -8,12 +10,10 @@ const { email, phone } = Astro.props;
 ---
 
 <section class="my-8 no-print">
-  <h2 class="flex items-center gap-3 text-2xl font-semibold text-primary mb-8 pb-3 border-b-2 border-primary dark:text-accent dark:border-accent">
-    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-      <path
-        d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
-      ></path>
-    </svg>
+  <h2
+    class="flex items-center gap-3 text-2xl font-semibold text-primary mb-8 pb-3 border-b-2 border-primary dark:text-accent dark:border-accent"
+  >
+    <Icon name="fa-solid:envelope" class="w-6 h-6" />
     Get In Touch
   </h2>
 
@@ -25,12 +25,11 @@ const { email, phone } = Astro.props;
       </p>
     </div>
     <div class="flex flex-col gap-4">
-      <a href={`mailto:${email}`} class="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-700 rounded text-gray-900 dark:text-gray-100 no-underline transition-all duration-200 hover:bg-blue-600 hover:text-white hover:translate-x-1 hover:scale-105">
-        <svg class="w-6 h-6 opacity-80" viewBox="0 0 24 24" fill="currentColor">
-          <path
-            d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
-          ></path>
-        </svg>
+      <a
+        href={`mailto:${email}`}
+        class="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-700 rounded text-gray-900 dark:text-gray-100 no-underline transition-all duration-200 hover:bg-blue-600 hover:text-white hover:translate-x-1 hover:scale-105"
+      >
+        <Icon name="fa-solid:envelope" class="w-6 h-6 opacity-80" />
         <div>
           <span class="block text-sm font-medium opacity-80">Email</span>
           <span class="block text-base font-semibold">{email}</span>
@@ -39,10 +38,11 @@ const { email, phone } = Astro.props;
 
       {
         phone && (
-          <a href={`tel:${phone}`} class="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-700 rounded text-gray-900 dark:text-gray-100 no-underline transition-all duration-200 hover:bg-blue-600 hover:text-white hover:translate-x-1 hover:scale-105">
-            <svg class="w-6 h-6 opacity-80" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
-            </svg>
+          <a
+            href={`tel:${phone}`}
+            class="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-700 rounded text-gray-900 dark:text-gray-100 no-underline transition-all duration-200 hover:bg-blue-600 hover:text-white hover:translate-x-1 hover:scale-105"
+          >
+            <Icon name="fa-solid:phone" class="w-6 h-6 opacity-80" />
             <div>
               <span class="block text-sm font-medium opacity-80">Phone</span>
               <span class="block text-base font-semibold">{phone}</span>

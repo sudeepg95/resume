@@ -5,6 +5,7 @@ import {
   calculateDuration,
 } from '../../utils/helpers/date-helpers';
 import { formatLocation, sanitizeUrl } from '../../utils/helpers/data-helpers';
+import { Icon } from 'astro-icon/components';
 
 interface Props {
   work: WorkExperience[];
@@ -20,77 +21,89 @@ const sortedWork = [...work].sort((a, b) => {
 ---
 
 <section class="my-8">
-  <h2 class="flex items-center gap-3 text-2xl font-semibold text-primary mb-8 pb-3 border-b-2 border-primary dark:text-accent dark:border-accent">
-    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-      <path
-        d="M10,2H14A2,2 0 0,1 16,4V6H20A2,2 0 0,1 22,8V19A2,2 0 0,1 20,21H4A2,2 0 0,1 2,19V8A2,2 0 0,1 4,6H8V4A2,2 0 0,1 10,2M14,6V4H10V6H14Z"
-      ></path>
-    </svg>
+  <h2
+    class="flex items-center gap-3 text-2xl font-semibold text-primary mb-8 pb-3 border-b-2 border-primary dark:text-accent dark:border-accent"
+  >
+    <Icon name="fa-solid:briefcase" class="w-6 h-6" />
     Work Experience
   </h2>
 
-{
-  sortedWork.length > 0 && (
-    <div class="relative before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-gray-200 dark:before:bg-gray-600 md:before:hidden print:before:hidden">
-      {sortedWork.map((job) => {
-        const dateRange = formatDateRange(job.start_date, job.end_date);
-        const duration = calculateDuration(job.start_date, job.end_date);
-        const location = formatLocation({
-          city: job.city || '',
-          region: job.state,
-          country: job.country,
-        });
+  {
+    sortedWork.length > 0 && (
+      <div class="relative before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-gray-200 dark:before:bg-gray-600 md:before:hidden print:before:hidden">
+        {sortedWork.map((job) => {
+          const dateRange = formatDateRange(job.start_date, job.end_date);
+          const duration = calculateDuration(job.start_date, job.end_date);
+          const location = formatLocation({
+            city: job.city || '',
+            region: job.state,
+            country: job.country,
+          });
 
-        return (
-          <article class="relative mb-10 pl-8 p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg transition-all duration-200 hover:shadow-md hover:border-blue-600 hover:translate-x-1 md:pl-6 md:hover:translate-x-0 print:break-inside-avoid print:border-none print:border-b print:border-gray-200 print:rounded-none print:px-0 print:py-4 print:mb-6 print:shadow-none print:hover:border-gray-200 print:hover:translate-x-0 animate-in fade-in-50 slide-in-from-left-8 duration-500 before:content-[''] before:absolute before:-left-1.5 before:top-8 before:w-3 before:h-3 before:bg-blue-600 before:rounded-full before:border-2 before:border-white dark:before:border-gray-800 md:before:hidden print:before:hidden">
-            <div class="flex justify-between items-start mb-4 gap-4 md:items-start">
-              <div class="flex-1">
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">{job.position}</h3>
-                <div class="text-base text-gray-600 dark:text-gray-400 flex items-center gap-2 flex-wrap">
-                  {job.url ? (
-                    <a
-                      href={sanitizeUrl(job.url)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="text-blue-600 dark:text-blue-400 no-underline font-medium transition-colors duration-150 hover:underline"
-                    >
-                      {job.name}
-                    </a>
-                  ) : (
-                    <span class="font-medium text-gray-900 dark:text-gray-100">{job.name}</span>
-                  )}
-                  {job.type && <span class="italic text-sm text-gray-600 dark:text-gray-400">({job.type})</span>}
+          return (
+            <article class="relative mb-10 pl-8 p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg transition-all duration-200 hover:shadow-md hover:border-blue-600 hover:translate-x-1 md:pl-6 md:hover:translate-x-0 print:break-inside-avoid print:border-none print:border-b print:border-gray-200 print:rounded-none print:px-0 print:py-4 print:mb-6 print:shadow-none print:hover:border-gray-200 print:hover:translate-x-0 animate-in fade-in-50 slide-in-from-left-8 duration-500 before:content-[''] before:absolute before:-left-1.5 before:top-8 before:w-3 before:h-3 before:bg-blue-600 before:rounded-full before:border-2 before:border-white dark:before:border-gray-800 md:before:hidden print:before:hidden">
+              <div class="flex justify-between items-start mb-4 gap-4 md:items-start">
+                <div class="flex-1">
+                  <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
+                    {job.position}
+                  </h3>
+                  <div class="text-base text-gray-600 dark:text-gray-400 flex items-center gap-2 flex-wrap">
+                    {job.url ? (
+                      <a
+                        href={sanitizeUrl(job.url)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-blue-600 dark:text-blue-400 no-underline font-medium transition-colors duration-150 hover:underline"
+                      >
+                        {job.name}
+                      </a>
+                    ) : (
+                      <span class="font-medium text-gray-900 dark:text-gray-100">
+                        {job.name}
+                      </span>
+                    )}
+                    {job.type && (
+                      <span class="italic text-sm text-gray-600 dark:text-gray-400">
+                        ({job.type})
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <div class="text-right text-sm text-gray-600 dark:text-gray-400 flex-shrink-0 md:text-left">
+                  <div class="flex flex-col items-end gap-1 md:items-start">
+                    <span class="font-medium text-gray-900 dark:text-gray-100">
+                      {dateRange}
+                    </span>
+                    <span class="text-xs opacity-80">({duration})</span>
+                  </div>
+                  {location && <div class="mt-2 text-xs">{location}</div>}
                 </div>
               </div>
 
-              <div class="text-right text-sm text-gray-600 dark:text-gray-400 flex-shrink-0 md:text-left">
-                <div class="flex flex-col items-end gap-1 md:items-start">
-                  <span class="font-medium text-gray-900 dark:text-gray-100">{dateRange}</span>
-                  <span class="text-xs opacity-80">({duration})</span>
+              {job.summary && (
+                <div class="my-4 p-4 bg-gray-50 dark:bg-gray-700 rounded border-l-3 border-blue-600 dark:border-blue-400">
+                  <p class="m-0 italic text-gray-600 dark:text-gray-400">
+                    {job.summary}
+                  </p>
                 </div>
-                {location && <div class="mt-2 text-xs">{location}</div>}
-              </div>
-            </div>
+              )}
 
-            {job.summary && (
-              <div class="my-4 p-4 bg-gray-50 dark:bg-gray-700 rounded border-l-3 border-blue-600 dark:border-blue-400">
-                <p class="m-0 italic text-gray-600 dark:text-gray-400">{job.summary}</p>
-              </div>
-            )}
-
-            {job.highlights && job.highlights.length > 0 && (
-              <div class="mt-4">
-                <ul class="list-none p-0 m-0">
-                  {job.highlights.map((highlight) => (
-                    <li class="relative pl-6 mb-3 last:mb-0 leading-normal text-gray-900 dark:text-gray-100 before:content-['▶'] before:absolute before:left-0 before:text-blue-600 dark:before:text-blue-400 before:text-xs before:top-0.5">{highlight}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </article>
-        );
-      })}
-    </div>
-  )
-}
+              {job.highlights && job.highlights.length > 0 && (
+                <div class="mt-4">
+                  <ul class="list-none p-0 m-0">
+                    {job.highlights.map((highlight) => (
+                      <li class="relative pl-6 mb-3 last:mb-0 leading-normal text-gray-900 dark:text-gray-100 before:content-['▶'] before:absolute before:left-0 before:text-blue-600 dark:before:text-blue-400 before:text-xs before:top-0.5">
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </article>
+          );
+        })}
+      </div>
+    )
+  }
 </section>

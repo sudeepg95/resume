@@ -13,11 +13,6 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "type-check": "astro check",
-    "test": "vitest",
-    "test:ui": "vitest --ui",
-    "test:e2e": "playwright test",
-    "test:e2e:headed": "playwright test --headed",
-    "test:e2e:ui": "playwright test --ui",
     "build:analyze": "astro build --analyze",
     "build:production": "npm run check && npm run build && npm run compress",
     "optimize": "npm run build && npm run compress",
@@ -26,8 +21,13 @@
   "dependencies": {
     "@astrojs/sitemap": "^3.5.0",
     "@astrojs/tailwind": "^6.0.2",
+    "@iconify-json/fa-brands": "^1.2.2",
+    "@iconify-json/fa-solid": "^1.2.2",
+    "@iconify-json/mdi": "^1.2.3",
+    "@iconify-json/simple-icons": "^1.2.48",
     "astro": "^5.13.2",
     "astro-eslint-parser": "^1.2.2",
+    "astro-icon": "^1.1.5",
     "gray-matter": "^4.0.3",
     "prettier-plugin-astro": "^0.14.1",
     "web-vitals": "^5.1.0",
@@ -35,13 +35,11 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
-    "@playwright/test": "^1.49.0",
     "@types/node": "^24.3.0",
     "@typescript-eslint/eslint-plugin": "^8.39.1",
     "@typescript-eslint/parser": "^8.39.1",
     "eslint": "^9.33.0",
     "globals": "^16.3.0",
-    "prettier": "^3.6.2",
-    "vitest": "^3.2.4"
+    "prettier": "^3.6.2"
   }
 }

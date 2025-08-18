@@ -78,7 +78,7 @@ export default {
       },
 
       spacing: {
-        '30': '7.5rem',
+        30: '7.5rem',
       },
       borderRadius: {
         sm: '0.25rem',
@@ -90,11 +90,12 @@ export default {
       },
       boxShadow: {
         sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-        DEFAULT: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+        DEFAULT:
+          '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
         md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
         lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
         xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-        'profile': '0 8px 32px rgba(0, 0, 0, 0.3)',
+        profile: '0 8px 32px rgba(0, 0, 0, 0.3)',
       },
       transitionDuration: {
         fast: '150ms',
@@ -105,13 +106,13 @@ export default {
         'blur-10': 'blur(10px)',
       },
       textShadow: {
-        'header': '0 2px 4px rgba(0, 0, 0, 0.3)',
+        header: '0 2px 4px rgba(0, 0, 0, 0.3)',
       },
       maxWidth: {
-        'letter': '8.5in',
+        letter: '8.5in',
       },
       minHeight: {
-        'letter': '11in',
+        letter: '11in',
       },
       backgroundImage: {
         'pattern-professional': `linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)`,
@@ -126,7 +127,7 @@ export default {
     },
   },
   plugins: [
-    function({ addUtilities }) {
+    function ({ addUtilities }) {
       const newUtilities = {
         '.text-shadow-header': {
           textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
@@ -166,8 +167,8 @@ export default {
           backgroundImage: `linear-gradient(135deg, #1f2937 0%, #374151 100%),
                             linear-gradient(45deg, transparent 40%, rgba(55, 65, 81, 0.1) 50%, transparent 60%)`,
         },
-      }
-      addUtilities(newUtilities)
-    }
+      };
+      addUtilities(newUtilities);
+    },
   ],
-}
+};

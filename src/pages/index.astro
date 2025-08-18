@@ -14,7 +14,11 @@ const pageTitle = `${basics.name} - ${basics.label}`;
 const pageDescription = about.summary.substring(0, 160) + '...';
 ---
 
-<ResumeLayout title={pageTitle} description={pageDescription} theme="professional">
+<ResumeLayout
+  title={pageTitle}
+  description={pageDescription}
+  theme="professional"
+>
   <Header basics={basics} />
   <About about={about} />
 
