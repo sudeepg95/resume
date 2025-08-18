@@ -1,25 +1,82 @@
 ---
 // src/components/sections/Header.astro
-// Static component with Lorem Ipsum content
+import type { Basics } from '../../utils/schemas/cv-schema';
+import { getNetworkIcon, sanitizeUrl } from '../../utils/helpers/data-helpers';
+
+interface Props {
+  basics: Basics;
+}
+
+const { basics } = Astro.props;
+const {
+  name,
+  label,
+  image,
+  bg_image,
+  email,
+  phone,
+  url,
+  location,
+  profiles,
+  actions,
+} = basics;
+
+// Process profiles to handle different URL formats
+const processedProfiles =
+  profiles
+    ?.map((profile) => ({
+      ...profile,
+      url:
+        profile.network === 'Email'
+          ? `mailto:${profile.url}`
+          : profile.network === 'Phone'
+            ? `tel:${profile.url}`
+            : sanitizeUrl(profile.url),
+      icon: getNetworkIcon(profile.network),
+    }))
+    .filter((profile) => profile.url) || [];
 ---
 
-<header class="resume-header">
-  <div class="header-overlay"></div>
+<header
+  class="resume-header"
+  style={bg_image ? `background-image: url(${bg_image})` : ''}
+>
+  {bg_image && <div class="header-overlay" />}
 
   <div class="header-content">
     <div class="header-main">
-      <div class="profile-image-container">
-        <img
-          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
-          alt="Professional headshot"
-          class="profile-image"
-          loading="eager"
-        />
-      </div>
+      {
+        image && (
+          <div class="profile-image-container">
+            <img
+              src={image}
+              alt={`${name} profile photo`}
+              class="profile-image"
+              loading="eager"
+            />
+          </div>
+        )
+      }
 
       <div class="header-text">
-        <h1 class="name">John Alexander Smith</h1>
-        <h2 class="title">Senior Software Engineer | Full-Stack Developer</h2>
+        <h1 class="name">{name}</h1>
+        <h2 class="title">{label}</h2>
+
+        {
+          url && (
+            <a
+              href={sanitizeUrl(url)}
+              class="website-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="sr-only">Visit website</span>
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M10.59 13.41c.41.39.41 1.03 0 1.42-.39.39-1.03.39-1.42 0a5.003 5.003 0 0 1 0-7.07l3.54-3.54a5.003 5.003 0 0 1 7.07 0 5.003 5.003 0 0 1 0 7.07l-1.49 1.49c.01-.82-.12-1.64-.4-2.42l.47-.48a2.982 2.982 0 0 0 0-4.24 2.982 2.982 0 0 0-4.24 0l-3.53 3.53a2.982 2.982 0 0 0 0 4.24zm2.82-4.24c.39-.39 1.03-.39 1.42 0a5.003 5.003 0 0 1 0 7.07l-3.54 3.54a5.003 5.003 0 0 1-7.07 0 5.003 5.003 0 0 1 0-7.07l1.49-1.49c-.01.82.12 1.64.4 2.42l-.47.48a2.982 2.982 0 0 0 0 4.24 2.982 2.982 0 0 0 4.24 0l3.53-3.53a2.982 2.982 0 0 0 0-4.24.996.996 0 0 1 0-1.42z" />
+              </svg>
+            </a>
+          )
+        }
       </div>
     </div>
 
@@ -30,59 +87,73 @@
             d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
           ></path>
         </svg>
-        <a href="mailto:john.smith@example.com" class="contact-link"
-          >john.smith@example.com</a
-        >
+        <a href={`mailto:${email}`} class="contact-link">{email}</a>
       </div>
 
-      <div class="contact-item">
-        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-          <path
-            d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"
-          ></path>
-        </svg>
-        <a href="tel:+1234567890" class="contact-link">+1 (234) 567-8900</a>
-      </div>
+      {
+        phone && (
+          <div class="contact-item">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+            </svg>
+            <a href={`tel:${phone}`} class="contact-link">
+              {phone}
+            </a>
+          </div>
+        )
+      }
 
-      <div class="contact-item">
-        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-          <path
-            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
-          ></path>
-        </svg>
-        <span>San Francisco, CA</span>
-      </div>
+      {
+        location && (
+          <div class="contact-item">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+            </svg>
+            <span>
+              {location.city}
+              {location.region && `, ${location.region}`}
+            </span>
+          </div>
+        )
+      }
     </div>
 
-    <div class="social-links">
-      <a
-        href="https://linkedin.com/in/johnsmith"
-        class="social-link"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <span class="social-icon linkedin"></span>
-        <span class="social-text">LinkedIn</span>
-      </a>
-      <a
-        href="https://github.com/johnsmith"
-        class="social-link"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <span class="social-icon github"></span>
-        <span class="social-text">GitHub</span>
-      </a>
-      <a
-        href="https://johnsmith.dev"
-        class="social-link"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <span class="social-icon website"></span>
-        <span class="social-text">Portfolio</span>
-      </a>
-    </div>
+    {
+      processedProfiles.length > 0 && (
+        <div class="social-links">
+          {processedProfiles.map((profile) => (
+            <a
+              href={profile.url!}
+              class="social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              title={`${profile.network}${profile.username ? ` (${profile.username})` : ''}`}
+            >
+              <span class={`social-icon ${profile.icon}`} />
+              <span class="social-text">{profile.network}</span>
+            </a>
+          ))}
+        </div>
+      )
+    }
+
+    {
+      actions && actions.length > 0 && (
+        <div class="header-actions">
+          {actions.map((action) => (
+            <a
+              href={action.url}
+              class={`action-button action-${action.type}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {action.icon && <span class="action-icon">{action.icon}</span>}
+              <span>{action.label}</span>
+            </a>
+          ))}
+        </div>
+      )
+    }
   </div>
 </header>
 

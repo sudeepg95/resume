@@ -1,5 +1,16 @@
 ---
 // src/components/sections/About.astro
+import type { About } from '../../utils/schemas/cv-schema';
+
+interface Props {
+  about: About;
+}
+
+const { about } = Astro.props;
+const { summary } = about;
+
+// Split summary into paragraphs if it contains line breaks
+const paragraphs = summary.split('\n\n').filter((p) => p.trim().length > 0);
 ---
 
 <section class="about-section">
@@ -13,25 +24,15 @@
   </h2>
 
   <div class="about-content">
-    <p class="summary-text">
-      Highly accomplished Senior Software Engineer with 8+ years of experience
-      specializing in full-stack web development, cloud architecture, and team
-      leadership. Proven track record of architecting scalable solutions,
-      leading complex migrations, and driving product innovation. Passionate
-      about creating efficient, maintainable code and mentoring junior
-      developers. Experience spans from startup environments to enterprise-level
-      applications, consistently delivering high-impact results in fast-paced,
-      collaborative teams.
-    </p>
-
-    <p class="summary-text">
-      Expert in modern JavaScript frameworks (React, Vue.js, Angular), backend
-      technologies (Node.js, Python, Java), and cloud platforms (AWS, Azure,
-      GCP). Strong advocate for test-driven development, CI/CD practices, and
-      agile methodologies. Currently focused on exploring emerging technologies
-      in AI/ML integration and serverless architectures while maintaining a
-      commitment to code quality and user experience excellence.
-    </p>
+    {
+      paragraphs.length > 1 ? (
+        paragraphs.map((paragraph) => (
+          <p class="summary-text">{paragraph.trim()}</p>
+        ))
+      ) : (
+        <p class="summary-text">{summary}</p>
+      )
+    }
   </div>
 </section>
 

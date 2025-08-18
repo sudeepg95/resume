@@ -1,5 +1,12 @@
 ---
 // src/components/sections/Skills.astro
+import type { Skill } from '../../utils/schemas/cv-schema';
+
+interface Props {
+  skills: Skill[];
+}
+
+const { skills } = Astro.props;
 ---
 
 <section class="skills-section">
@@ -12,141 +19,30 @@
     Skills & Technologies
   </h2>
 
-  <div class="skills-grid">
-    <!-- Programming Languages -->
-    <div class="skill-category">
-      <h3 class="category-title">
-        <svg class="category-icon" viewBox="0 0 24 24" fill="currentColor">
-          <path
-            d="M8,3A2,2 0 0,0 6,5V9A2,2 0 0,1 4,11H3V13H4A2,2 0 0,1 6,15V19A2,2 0 0,0 8,21H10V19H8V14A2,2 0 0,0 6,12A2,2 0 0,0 8,10V5H10V3H8M16,3A2,2 0 0,1 18,5V9A2,2 0 0,0 20,11H21V13H20A2,2 0 0,0 18,15V19A2,2 0 0,1 16,21H14V19H16V14A2,2 0 0,1 18,12A2,2 0 0,1 16,10V5H14V3H16Z"
-          ></path>
-        </svg>
-        Programming Languages
-        <span class="skill-level">Expert</span>
-      </h3>
-      <div class="keywords-container">
-        <span class="skill-tag">JavaScript</span>
-        <span class="skill-tag">TypeScript</span>
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">Java</span>
-        <span class="skill-tag">Go</span>
-        <span class="skill-tag">SQL</span>
-      </div>
+{
+  skills.length > 0 && (
+    <div class="skills-grid">
+      {skills.map((skill) => (
+        <div class="skill-category">
+          <h3 class="category-title">
+            <svg class="category-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M8,3A2,2 0 0,0 6,5V9A2,2 0 0,1 4,11H3V13H4A2,2 0 0,1 6,15V19A2,2 0 0,0 8,21H10V19H8V14A2,2 0 0,0 6,12A2,2 0 0,0 8,10V5H10V3H8M16,3A2,2 0 0,1 18,5V9A2,2 0 0,0 20,11H21V13H20A2,2 0 0,0 18,15V19A2,2 0 0,1 16,21H14V19H16V14A2,2 0 0,1 18,12A2,2 0 0,1 16,10V5H14V3H16Z"
+              ></path>
+            </svg>
+            {skill.name}
+            {skill.level && <span class="skill-level">{skill.level}</span>}
+          </h3>
+          <div class="keywords-container">
+            {skill.keywords.map((keyword) => (
+              <span class="skill-tag">{keyword}</span>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
-
-    <!-- Frontend Technologies -->
-    <div class="skill-category">
-      <h3 class="category-title">
-        <svg class="category-icon" viewBox="0 0 24 24" fill="currentColor">
-          <path
-            d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z"
-          ></path>
-        </svg>
-        Frontend Development
-        <span class="skill-level">Advanced</span>
-      </h3>
-      <div class="keywords-container">
-        <span class="skill-tag">React</span>
-        <span class="skill-tag">Vue.js</span>
-        <span class="skill-tag">Angular</span>
-        <span class="skill-tag">Svelte</span>
-        <span class="skill-tag">Next.js</span>
-        <span class="skill-tag">Nuxt.js</span>
-        <span class="skill-tag">Tailwind CSS</span>
-        <span class="skill-tag">SCSS</span>
-      </div>
-    </div>
-
-    <!-- Backend Technologies -->
-    <div class="skill-category">
-      <h3 class="category-title">
-        <svg class="category-icon" viewBox="0 0 24 24" fill="currentColor">
-          <path
-            d="M4,1C2.89,1 2,1.89 2,3V7C2,8.11 2.89,9 4,9H1V11H13V9H10C11.11,9 12,8.11 12,7V3C12,1.89 11.11,1 10,1H4M4,3H10V7H4V3M3,13V18L3,19H21V18V13H3M20,15V17H19V15H20Z"
-          ></path>
-        </svg>
-        Backend Development
-        <span class="skill-level">Advanced</span>
-      </h3>
-      <div class="keywords-container">
-        <span class="skill-tag">Node.js</span>
-        <span class="skill-tag">Express.js</span>
-        <span class="skill-tag">NestJS</span>
-        <span class="skill-tag">Django</span>
-        <span class="skill-tag">FastAPI</span>
-        <span class="skill-tag">Spring Boot</span>
-        <span class="skill-tag">GraphQL</span>
-        <span class="skill-tag">REST APIs</span>
-      </div>
-    </div>
-
-    <!-- Database Technologies -->
-    <div class="skill-category">
-      <h3 class="category-title">
-        <svg class="category-icon" viewBox="0 0 24 24" fill="currentColor">
-          <path
-            d="M12,3C7.58,3 4,4.79 4,7C4,9.21 7.58,11 12,11C16.42,11 20,9.21 20,7C20,4.79 16.42,3 12,3M4,9V12C4,14.21 7.58,16 12,16C16.42,16 20,14.21 20,12V9C20,11.21 16.42,13 12,13C7.58,13 4,11.21 4,9M4,14V17C4,19.21 7.58,21 12,21C16.42,21 20,19.21 20,17V14C20,16.21 16.42,18 12,18C7.58,18 4,16.21 4,14Z"
-          ></path>
-        </svg>
-        Database & Storage
-        <span class="skill-level">Intermediate</span>
-      </h3>
-      <div class="keywords-container">
-        <span class="skill-tag">PostgreSQL</span>
-        <span class="skill-tag">MongoDB</span>
-        <span class="skill-tag">Redis</span>
-        <span class="skill-tag">MySQL</span>
-        <span class="skill-tag">Elasticsearch</span>
-        <span class="skill-tag">DynamoDB</span>
-      </div>
-    </div>
-
-    <!-- Cloud & DevOps -->
-    <div class="skill-category">
-      <h3 class="category-title">
-        <svg class="category-icon" viewBox="0 0 24 24" fill="currentColor">
-          <path
-            d="M6.5,20Q4.22,20 2.61,18.43Q1,16.85 1,14.58Q1,12.63 2.17,11.1Q3.35,9.57 5.25,9.15Q5.88,6.85 7.75,5.43Q9.63,4 12,4Q14.93,4 16.96,6.04Q19,8.07 19,11Q20.73,11.2 21.86,12.5Q23,13.78 23,15.5Q23,17.38 21.69,18.69Q20.38,20 18.5,20H6.5M6.5,18H18.5Q19.28,18 19.89,17.39Q20.5,16.78 20.5,16Q20.5,15.22 19.89,14.61Q19.28,14 18.5,14H17V11Q17,9.15 15.92,8.08Q14.85,7 13,7Q11.15,7 10.08,8.08Q9,9.15 9,11H8.5Q7.18,11 6.09,11.91Q5,12.82 5,14.25Q5,15.68 6.09,16.59Q7.18,17.5 8.5,17.5H6.5Q5.12,17.5 4.31,16.69Q3.5,15.88 3.5,14.5Q3.5,13.12 4.31,12.31Q5.12,11.5 6.5,11.5V18Z"
-          ></path>
-        </svg>
-        Cloud & DevOps
-        <span class="skill-level">Intermediate</span>
-      </h3>
-      <div class="keywords-container">
-        <span class="skill-tag">AWS</span>
-        <span class="skill-tag">Azure</span>
-        <span class="skill-tag">Docker</span>
-        <span class="skill-tag">Kubernetes</span>
-        <span class="skill-tag">Terraform</span>
-        <span class="skill-tag">Jenkins</span>
-        <span class="skill-tag">GitHub Actions</span>
-        <span class="skill-tag">Vercel</span>
-      </div>
-    </div>
-
-    <!-- Tools & Others -->
-    <div class="skill-category">
-      <h3 class="category-title">
-        <svg class="category-icon" viewBox="0 0 24 24" fill="currentColor">
-          <path
-            d="M22.7,19L13.6,9.9C14.5,7.6 14,4.9 12.1,3C10.1,1 7.1,0.6 4.7,1.7L9,6L6,9L1.6,4.7C0.4,7.1 0.9,10.1 2.9,12.1C4.8,14 7.5,14.5 9.8,13.6L18.9,22.7C19.3,23.1 19.9,23.1 20.3,22.7L22.6,20.4C23.1,20 23.1,19.3 22.7,19Z"
-          ></path>
-        </svg>
-        Tools & Technologies
-        <span class="skill-level">Advanced</span>
-      </h3>
-      <div class="keywords-container">
-        <span class="skill-tag">Git</span>
-        <span class="skill-tag">Webpack</span>
-        <span class="skill-tag">Vite</span>
-        <span class="skill-tag">Jest</span>
-        <span class="skill-tag">Cypress</span>
-        <span class="skill-tag">Figma</span>
-        <span class="skill-tag">Jira</span>
-        <span class="skill-tag">Slack</span>
-      </div>
-    </div>
-  </div>
+  )
+}
 </section>
 
 <style>

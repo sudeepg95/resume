@@ -1,0 +1,143 @@
+{
+  "basics": {
+    "name": "Sudeep G",
+    "label": "Senior Software Engineer | Full-Stack Developer",
+    "image": null,
+    "bg_image": null,
+    "email": "sudeepg95@gmail.com",
+    "phone": "+919020709002",
+    "url": null,
+    "location": {
+      "address": null,
+      "postal_code": null,
+      "city": "Bengaluru",
+      "country_code": "IN",
+      "region": null
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "sudeepg95",
+        "url": "https://www.linkedin.com/in/sudeepg95",
+        "icon": null
+      },
+      {
+        "network": "GitHub",
+        "username": "sudeepg95",
+        "url": "https://github.com/sudeepg95",
+        "icon": null
+      },
+      {
+        "network": "Email",
+        "username": null,
+        "url": "sudeepg95@gmail.com",
+        "icon": null
+      },
+      {
+        "network": "Phone",
+        "username": null,
+        "url": "+919020709002",
+        "icon": null
+      }
+    ],
+    "actions": []
+  },
+  "about": {
+    "summary": "Highly accomplished Senior Software Engineer with 7 years of experience specializing in full-stack web development, machine learning, and product building. Proven ability to architect scalable solutions, lead complex migrations, and drive product innovation, consistently delivering high-impact results in fast-paced environments."
+  },
+  "media": [],
+  "work": [
+    {
+      "name": "InVideo",
+      "position": "Senior Software Engineer",
+      "type": null,
+      "url": null,
+      "start_date": "2021-11-01",
+      "end_date": "2024-03-28",
+      "summary": "Led UI architectural initiatives and drove significant code migrations to enhance a next-gen video editing platform.",
+      "highlights": [
+        "Architected and implemented critical UI architectural decisions, optimizing front-end performance and scalability for a next-gen video editing platform.",
+        "Directed and executed large-scale code migration from Angular to React for entire modules utilizing Module Federation, significantly improving system efficiency and maintainability.",
+        "Provided 24/7 on-call support and directly engaged with users to identify and resolve critical bugs in production environments, ensuring high system availability and user satisfaction."
+      ],
+      "city": "Remote",
+      "state": null,
+      "country": ""
+    },
+    {
+      "name": "ThoughtWorks",
+      "position": "Senior Consultant (Contract)",
+      "type": null,
+      "url": null,
+      "start_date": "2020-08-01",
+      "end_date": "2021-11-01",
+      "summary": "Delivered comprehensive web and mobile modules, focusing on high-performance and user experience for diverse client projects.",
+      "highlights": [
+        "Developed scalable web modules using React and Angular, enhancing user experience and functionality for key client applications.",
+        "Engineered cross-platform React components for seamless integration across iOS, Android, and web applications, broadening accessibility.",
+        "Built robust Angular modules for Progressive Web Applications (PWAs), improving offline capabilities and user engagement.",
+        "Constructed high-performance static websites from scratch using Gatsby, achieving minimal load times and optimizing SEO performance."
+      ],
+      "city": "Remote",
+      "state": null,
+      "country": ""
+    }
+  ],
+  "volunteer": [],
+  "education": [
+    {
+      "institution": "NSS College of Engineering",
+      "url": null,
+      "area": "Computer Science & Engineering",
+      "study_type": "B.Tech",
+      "start_date": "2012-08-01",
+      "end_date": "2016-05-31",
+      "score": null,
+      "courses": [],
+      "city": "Palakkad",
+      "state": null,
+      "country": "India"
+    }
+  ],
+  "awards": [],
+  "publications": [],
+  "languages": [],
+  "certificates": [
+    {
+      "name": "TensorFlow in Practice Specialization",
+      "date": null,
+      "issuer": "deeplearning.ai (Coursera)",
+      "url": null
+    },
+    {
+      "name": "Architecting with Google Cloud Platform Specialization",
+      "date": null,
+      "issuer": "Coursera",
+      "url": null
+    }
+  ],
+  "skills": [
+    {
+      "name": "Programming Languages",
+      "keywords": ["JavaScript", "Python", "Golang", "Java", "Bash"]
+    },
+    {
+      "name": "Frameworks/Libraries",
+      "keywords": [
+        "React",
+        "React Native",
+        "Redux",
+        "Angular",
+        "Gatsby",
+        "Vue.js",
+        "Express",
+        "NestJS"
+      ]
+    }
+  ],
+  "interests": [],
+  "references": [],
+  "projects": [],
+  "links": [],
+  "locations": []
+}
