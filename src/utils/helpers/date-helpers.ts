@@ -1,8 +1,3 @@
-// src/utils/helpers/date-helpers.ts
-
-/**
- * Format a date string to readable format
- */
 export function formatDate(dateString: string | null | undefined): string {
   if (!dateString) return 'Present';
 
@@ -12,15 +7,11 @@ export function formatDate(dateString: string | null | undefined): string {
       year: 'numeric',
       month: 'short',
     });
-  } catch (error) {
-    console.warn('Invalid date format:', dateString);
+  } catch {
     return dateString || 'Present';
   }
 }
 
-/**
- * Format a date range
- */
 export function formatDateRange(
   startDate: string,
   endDate?: string | null
@@ -30,9 +21,6 @@ export function formatDateRange(
   return `${start} - ${end}`;
 }
 
-/**
- * Calculate duration between two dates
- */
 export function calculateDuration(
   startDate: string,
   endDate?: string | null
@@ -55,40 +43,9 @@ export function calculateDuration(
     } else {
       return 'Less than 1 month';
     }
-  } catch (error) {
-    console.warn('Error calculating duration:', error);
+  } catch {
     return '';
   }
 }
 
-/**
- * Check if a date is current (no end date or end date is in the future)
- */
-export function isCurrentPosition(endDate?: string | null): boolean {
-  if (!endDate) return true;
 
-  try {
-    const end = new Date(endDate);
-    const now = new Date();
-    return end > now;
-  } catch (error) {
-    return false;
-  }
-}
-
-/**
- * Sort items by start date (newest first)
- */
-export function sortByStartDate<T extends { start_date: string }>(
-  items: T[]
-): T[] {
-  return [...items].sort((a, b) => {
-    try {
-      const dateA = new Date(a.start_date);
-      const dateB = new Date(b.start_date);
-      return dateB.getTime() - dateA.getTime();
-    } catch (error) {
-      return 0;
-    }
-  });
-}

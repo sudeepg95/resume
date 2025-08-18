@@ -1,4 +1,3 @@
-/* CSS Reset and Global Styles */
 *,
 *::before,
 *::after {
@@ -8,7 +7,6 @@
 }
 
 :root {
-  /* Base Colors */
   --color-white: #ffffff;
   --color-black: #000000;
   --color-gray-50: #f9fafb;
@@ -22,7 +20,6 @@
   --color-gray-800: #1f2937;
   --color-gray-900: #111827;
 
-  /* Theme Colors (Professional) */
   --color-primary: #1e40af;
   --color-accent: #3b82f6;
   --color-text: #1f2937;
@@ -34,14 +31,30 @@
   --color-warning: #f59e0b;
   --color-error: #ef4444;
 
-  /* Typography */
+  /* Overlay and transparency colors */
+  --color-overlay-light: rgba(255, 255, 255, 0.1);
+  --color-overlay-medium: rgba(255, 255, 255, 0.15);
+  --color-overlay-heavy: rgba(255, 255, 255, 0.2);
+  --color-overlay-subtle: rgba(255, 255, 255, 0.05);
+  --color-overlay-gradient: rgba(255, 255, 255, 0.4);
+  
+  --color-shadow-light: rgba(0, 0, 0, 0.05);
+  --color-shadow-medium: rgba(0, 0, 0, 0.1);
+  --color-shadow-heavy: rgba(0, 0, 0, 0.15);
+  --color-shadow-extra: rgba(0, 0, 0, 0.3);
+  --color-shadow-subtle: rgba(0, 0, 0, 0.06);
+  --color-shadow-minimal: rgba(0, 0, 0, 0.04);
+  --color-shadow-dark: rgba(0, 0, 0, 0.2);
+  --color-shadow-dark-heavy: rgba(0, 0, 0, 0.4);
+  
+  --color-border-overlay: rgba(255, 255, 255, 0.2);
+
   --font-family-primary:
     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-family-heading: var(--font-family-primary);
   --font-family-mono:
     'Fira Code', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
 
-  /* Spacing Scale */
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
   --space-md: 1rem;
@@ -50,7 +63,6 @@
   --space-2xl: 3rem;
   --space-3xl: 4rem;
 
-  /* Border Radius */
   --border-radius-sm: 0.25rem;
   --border-radius: 0.375rem;
   --border-radius-md: 0.5rem;
@@ -58,22 +70,19 @@
   --border-radius-xl: 1rem;
   --border-radius-full: 9999px;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-sm: 0 1px 2px 0 var(--color-shadow-light);
+  --shadow: 0 1px 3px 0 var(--color-shadow-medium), 0 1px 2px 0 var(--color-shadow-subtle);
   --shadow-md:
-    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    0 4px 6px -1px var(--color-shadow-medium), 0 2px 4px -1px var(--color-shadow-subtle);
   --shadow-lg:
-    0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    0 10px 15px -3px var(--color-shadow-medium), 0 4px 6px -2px var(--color-shadow-light);
   --shadow-xl:
-    0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    0 20px 25px -5px var(--color-shadow-medium), 0 10px 10px -5px var(--color-shadow-minimal);
 
-  /* Transitions */
   --transition-fast: 150ms ease;
   --transition-normal: 200ms ease;
   --transition-slow: 300ms ease;
 
-  /* Z-index Scale */
   --z-dropdown: 1000;
   --z-sticky: 1020;
   --z-fixed: 1030;
@@ -97,7 +106,6 @@ body {
   line-height: 1.6;
 }
 
-/* Typography */
 h1,
 h2,
 h3,
@@ -144,7 +152,6 @@ a:hover {
   color: var(--color-accent);
 }
 
-/* Utility Classes */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -163,7 +170,6 @@ a:hover {
   }
 }
 
-/* Print Styles */
 @media print {
   * {
     -webkit-print-color-adjust: exact;
@@ -200,7 +206,6 @@ a:hover {
   }
 }
 
-/* Responsive Typography */
 @media (max-width: 768px) {
   html {
     font-size: 14px;
@@ -214,5 +219,55 @@ a:hover {
   }
   h3 {
     font-size: 1.25rem;
+  }
+}
+
+/* Dark Mode Support */
+[data-mode='dark'] {
+  color-scheme: dark;
+}
+
+[data-mode='light'] {
+  color-scheme: light;
+}
+
+
+/* Enhanced shadows for dark mode */
+[data-mode='dark'] {
+  --shadow-sm: 0 1px 2px 0 var(--color-shadow-extra);
+  --shadow: 0 1px 3px 0 var(--color-shadow-dark-heavy), 0 1px 2px 0 var(--color-shadow-dark);
+  --shadow-md: 0 4px 6px -1px var(--color-shadow-dark-heavy), 0 2px 4px -1px var(--color-shadow-dark);
+  --shadow-lg: 0 10px 15px -3px var(--color-shadow-dark-heavy), 0 4px 6px -2px var(--color-shadow-dark);
+  --shadow-xl: 0 20px 25px -5px var(--color-shadow-dark-heavy), 0 10px 10px -5px var(--color-shadow-dark);
+}
+
+/* Smooth transitions for mode changes */
+* {
+  transition: background-color var(--transition-normal), 
+              color var(--transition-normal), 
+              border-color var(--transition-normal);
+}
+
+/* Ensure text elements use proper color variables */
+body, h1, h2, h3, h4, h5, h6, p, span, div, a, li {
+  color: inherit;
+}
+
+.print-mode {
+  @media screen {
+    .no-print {
+      display: none !important;
+    }
+
+    body {
+      background: var(--color-white) !important;
+    }
+
+    .cv-container {
+      box-shadow: none !important;
+      margin: 0 !important;
+      padding: 1rem !important;
+      border-radius: 0 !important;
+    }
   }
 }

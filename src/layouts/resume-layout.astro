@@ -1,0 +1,163 @@
+---
+import type { CVData } from '../utils/schemas/cv-schema';
+import ThemeSwitcher from '../components/ui/theme-switcher.astro';
+import SocialShare from '../components/ui/social-share.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  theme?: 'professional' | 'modern' | 'creative' | 'minimal';
+  cvData?: CVData;
+}
+
+const {
+  title,
+  description = 'Professional CV Website',
+  theme = 'professional',
+  cvData,
+} = Astro.props;
+
+const structuredData = cvData
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: cvData.basics.name,
+      jobTitle: cvData.basics.label,
+      email: cvData.basics.email,
+      telephone: cvData.basics.phone,
+      url: cvData.basics.url,
+      address: cvData.basics.location
+        ? {
+            '@type': 'PostalAddress',
+            addressLocality: cvData.basics.location.city,
+            addressCountry: cvData.basics.location.country_code,
+          }
+        : undefined,
+    }
+  : null;
+---
+
+<!doctype html>
+<html lang="en" data-theme={theme}>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={cvData?.basics.name} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta
+      property="og:image"
+      content={cvData?.basics.image || '/og-image.jpg'}
+    />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta
+      property="twitter:image"
+      content={cvData?.basics.image || '/og-image.jpg'}
+    />
+
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={Astro.url} />
+
+    {
+      structuredData && (
+        <script
+          type="application/ld+json"
+          is:inline
+          set:html={JSON.stringify(structuredData)}
+        />
+      )
+    }
+
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      as="style"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/src/styles/animations.css" />
+    
+    <style>
+      @import '/src/styles/globals.css';
+    </style>
+  </head>
+  <body>
+    <ThemeSwitcher />
+
+    <!-- <ExportButton /> -->
+
+    <SocialShare 
+      title={title}
+      url={Astro.url.toString()}
+      description={description}
+    />
+
+    <main class="cv-container">
+      <slot />
+    </main>
+
+    <script>
+      import { themeManager } from '../utils/theme-manager';
+      import { animationManager } from '../utils/animations';
+      import { initProductionOptimizations } from '../utils/production-optimizer';
+
+      document.addEventListener('DOMContentLoaded', () => {
+        themeManager.init();
+
+        animationManager.init({
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px',
+          stagger: 100,
+        });
+
+        initProductionOptimizations();
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  .cv-container {
+    max-width: 8.5in;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--color-background);
+    color: var(--color-text);
+    box-shadow: var(--shadow-lg);
+    border-radius: var(--border-radius-lg);
+    min-height: 11in;
+  }
+
+  @media (max-width: 768px) {
+    .cv-container {
+      margin: 1rem;
+      padding: 1rem;
+      border-radius: var(--border-radius);
+    }
+  }
+
+  @media print {
+    .cv-container {
+      max-width: none;
+      margin: 0;
+      padding: 0;
+      box-shadow: none;
+      border-radius: 0;
+    }
+  }
+</style>

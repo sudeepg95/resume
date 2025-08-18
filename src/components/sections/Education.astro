@@ -1,5 +1,4 @@
 ---
-// src/components/sections/Education.astro
 import type { Education } from '../../utils/schemas/cv-schema';
 import { formatDateRange } from '../../utils/helpers/date-helpers';
 import { formatLocation, sanitizeUrl } from '../../utils/helpers/data-helpers';
@@ -10,7 +9,6 @@ interface Props {
 
 const { education } = Astro.props;
 
-// Sort education by start date (newest first)
 const sortedEducation = [...education].sort((a, b) => {
   const dateA = new Date(a.start_date);
   const dateB = new Date(b.start_date);
@@ -101,9 +99,15 @@ const sortedEducation = [...education].sort((a, b) => {
     border-bottom: 2px solid var(--color-primary);
   }
 
+  :global([data-mode='dark']) .section-title {
+    color: var(--color-accent) !important;
+    border-bottom-color: var(--color-accent) !important;
+  }
+
   .section-icon {
     width: 1.5rem;
     height: 1.5rem;
+    color: inherit;
   }
 
   .education-timeline {

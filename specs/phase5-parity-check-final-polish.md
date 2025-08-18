@@ -1261,69 +1261,6 @@ export default defineConfig({
 });
 ```
 
-Create deployment configuration files:
-
-#### Vercel Deployment (`vercel.json`):
-
-```json
-{
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        }
-      ]
-    }
-  ],
-  "redirects": [
-    {
-      "source": "/resume",
-      "destination": "/",
-      "permanent": true
-    }
-  ]
-}
-```
-
-#### Netlify Deployment (`netlify.toml`):
-
-```toml
-[build]
-  command = "npm run build"
-  publish = "dist"
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-
-[[redirects]]
-  from = "/resume"
-  to = "/"
-  status = 301
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-```
-
 ## TODO List for Phase 5
 
 ### ✅ Feature Parity Analysis
@@ -1368,8 +1305,6 @@ Create deployment configuration files:
 
 ### ✅ Deployment Configuration
 
-- [ ] Create Vercel deployment configuration
-- [ ] Add Netlify deployment settings
 - [ ] Configure GitHub Pages deployment
 - [ ] Set up custom domain configuration
 - [ ] Test deployment pipelines

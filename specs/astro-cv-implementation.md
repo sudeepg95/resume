@@ -2108,56 +2108,7 @@ export default defineConfig({
 
 ### Deployment Strategies
 
-#### 1. Vercel Deployment
-
-```json
-// vercel.json
-{
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    }
-  ],
-  "redirects": [
-    {
-      "source": "/resume",
-      "destination": "/",
-      "permanent": true
-    }
-  ]
-}
-```
-
-#### 2. Netlify Deployment
-
-```toml
-# netlify.toml
-[build]
-  command = "npm run build"
-  publish = "dist"
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
-
-[[redirects]]
-  from = "/resume"
-  to = "/"
-  status = 301
-```
-
-#### 3. GitHub Pages Deployment
+#### GitHub Pages Deployment
 
 ```yaml
 # .github/workflows/deploy.yml

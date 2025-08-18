@@ -1,5 +1,4 @@
 ---
-// src/components/sections/WorkExperience.astro
 import type { WorkExperience } from '../../utils/schemas/cv-schema';
 import {
   formatDateRange,
@@ -13,7 +12,6 @@ interface Props {
 
 const { work } = Astro.props;
 
-// Sort work experience by start date (newest first)
 const sortedWork = [...work].sort((a, b) => {
   const dateA = new Date(a.start_date);
   const dateB = new Date(b.start_date);
@@ -114,9 +112,15 @@ const sortedWork = [...work].sort((a, b) => {
     border-bottom: 2px solid var(--color-primary);
   }
 
+  :global([data-mode='dark']) .section-title {
+    color: var(--color-accent) !important;
+    border-bottom-color: var(--color-accent) !important;
+  }
+
   .section-icon {
     width: 1.5rem;
     height: 1.5rem;
+    color: inherit;
   }
 
   .work-timeline {

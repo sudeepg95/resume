@@ -1,5 +1,4 @@
 ---
-// src/components/sections/Skills.astro
 import type { Skill } from '../../utils/schemas/cv-schema';
 
 interface Props {
@@ -62,9 +61,15 @@ const { skills } = Astro.props;
     border-bottom: 2px solid var(--color-primary);
   }
 
+  :global([data-mode='dark']) .section-title {
+    color: var(--color-accent) !important;
+    border-bottom-color: var(--color-accent) !important;
+  }
+
   .section-icon {
     width: 1.5rem;
     height: 1.5rem;
+    color: inherit;
   }
 
   .skills-grid {
@@ -95,7 +100,6 @@ const { skills } = Astro.props;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    justify-content: space-between;
     flex-wrap: wrap;
   }
 
@@ -105,10 +109,14 @@ const { skills } = Astro.props;
     color: var(--color-primary);
   }
 
+  :global([data-mode='dark']) .category-icon {
+    color: var(--color-accent) !important;
+  }
+
   .skill-level {
     font-size: 0.75rem;
     background: var(--color-primary);
-    color: white;
+    color: var(--color-white);
     padding: 0.25rem 0.5rem;
     border-radius: var(--border-radius-full);
     font-weight: 500;
@@ -136,7 +144,7 @@ const { skills } = Astro.props;
 
   .skill-tag:hover {
     background: var(--color-primary);
-    color: white;
+    color: var(--color-white);
     border-color: var(--color-primary);
     transform: translateY(-1px);
   }

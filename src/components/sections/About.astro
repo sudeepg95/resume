@@ -1,5 +1,4 @@
 ---
-// src/components/sections/About.astro
 import type { About } from '../../utils/schemas/cv-schema';
 
 interface Props {
@@ -9,7 +8,6 @@ interface Props {
 const { about } = Astro.props;
 const { summary } = about;
 
-// Split summary into paragraphs if it contains line breaks
 const paragraphs = summary.split('\n\n').filter((p) => p.trim().length > 0);
 ---
 
@@ -53,9 +51,15 @@ const paragraphs = summary.split('\n\n').filter((p) => p.trim().length > 0);
     border-bottom: 2px solid var(--color-primary);
   }
 
+  :global([data-mode='dark']) .section-title {
+    color: var(--color-accent) !important;
+    border-bottom-color: var(--color-accent) !important;
+  }
+
   .section-icon {
     width: 1.5rem;
     height: 1.5rem;
+    color: inherit;
   }
 
   .about-content {

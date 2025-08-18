@@ -1,9 +1,28 @@
 ---
-// src/pages/index.astro - Redirect to default resume
-export async function getStaticPaths() {
-  return [{ params: {}, props: {} }];
-}
+import ResumeLayout from '../layouts/resume-layout.astro';
+import Header from '../components/sections/header.astro';
+import About from '../components/sections/about.astro';
+import WorkExperience from '../components/sections/work-experience.astro';
+import Skills from '../components/sections/skills.astro';
+import Education from '../components/sections/education.astro';
+import Contact from '../components/sections/contact.astro';
+import { cvData as ProfileData } from '../data/sudeep-cv.ts';
 
-// Redirect to the default resume
-return Astro.redirect('/sudeep-cv');
+const { basics, about, work, education, skills } = ProfileData;
+
+const pageTitle = `${basics.name} - ${basics.label}`;
+const pageDescription = about.summary.substring(0, 160) + '...';
 ---
+
+<ResumeLayout title={pageTitle} description={pageDescription} theme="professional">
+  <Header basics={basics} />
+  <About about={about} />
+
+  {work && work.length > 0 && <WorkExperience work={work} />}
+
+  {skills && skills.length > 0 && <Skills skills={skills} />}
+
+  {education && education.length > 0 && <Education education={education} />}
+
+  <Contact email={basics.email} phone={basics.phone} />
+</ResumeLayout>

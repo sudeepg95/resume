@@ -1,7 +1,5 @@
-// src/utils/schemas/cv-schema.ts
 import { z } from 'zod';
 
-// Location Schema
 export const LocationSchema = z.object({
   address: z.string().nullable().optional(),
   postal_code: z.string().nullable().optional(),
@@ -10,7 +8,6 @@ export const LocationSchema = z.object({
   region: z.string().nullable().optional(),
 });
 
-// Profile Schema
 export const ProfileSchema = z.object({
   network: z.string(),
   username: z.string().nullable().optional(),
@@ -18,7 +15,6 @@ export const ProfileSchema = z.object({
   icon: z.string().nullable().optional(),
 });
 
-// Action Schema
 export const ActionSchema = z.object({
   type: z.string(),
   label: z.string(),
@@ -26,7 +22,6 @@ export const ActionSchema = z.object({
   icon: z.string().optional(),
 });
 
-// Basics Schema
 export const BasicsSchema = z.object({
   name: z.string(),
   label: z.string(),
@@ -40,18 +35,16 @@ export const BasicsSchema = z.object({
   actions: z.array(ActionSchema).optional(),
 });
 
-// About Schema
 export const AboutSchema = z.object({
   summary: z.string(),
 });
 
-// Work Experience Schema
 export const WorkExperienceSchema = z.object({
   name: z.string(),
   position: z.string(),
   type: z.string().nullable().optional(),
   url: z.string().nullable().optional(),
-  start_date: z.string(), // ISO date format YYYY-MM-DD
+  start_date: z.string(),
   end_date: z.string().nullable().optional(),
   summary: z.string().optional(),
   highlights: z.array(z.string()).optional(),
@@ -60,7 +53,6 @@ export const WorkExperienceSchema = z.object({
   country: z.string().optional(),
 });
 
-// Education Schema
 export const EducationSchema = z.object({
   institution: z.string(),
   url: z.string().nullable().optional(),
@@ -75,14 +67,12 @@ export const EducationSchema = z.object({
   country: z.string().optional(),
 });
 
-// Skill Schema
 export const SkillSchema = z.object({
   name: z.string(),
   level: z.string().optional(),
   keywords: z.array(z.string()),
 });
 
-// Certificate Schema
 export const CertificateSchema = z.object({
   name: z.string(),
   date: z.string().nullable().optional(),
@@ -90,7 +80,6 @@ export const CertificateSchema = z.object({
   url: z.string().nullable().optional(),
 });
 
-// Project Schema
 export const ProjectSchema = z.object({
   name: z.string(),
   description: z.string(),
@@ -101,7 +90,6 @@ export const ProjectSchema = z.object({
   url: z.string().nullable().optional(),
 });
 
-// Award Schema
 export const AwardSchema = z.object({
   title: z.string(),
   date: z.string().optional(),
@@ -109,7 +97,6 @@ export const AwardSchema = z.object({
   summary: z.string().optional(),
 });
 
-// Publication Schema
 export const PublicationSchema = z.object({
   name: z.string(),
   publisher: z.string(),
@@ -118,26 +105,22 @@ export const PublicationSchema = z.object({
   summary: z.string().optional(),
 });
 
-// Language Schema
 export const LanguageSchema = z.object({
   language: z.string(),
   fluency: z.string().optional(),
 });
 
-// Interest Schema
 export const InterestSchema = z.object({
   name: z.string(),
   keywords: z.array(z.string()).optional(),
 });
 
-// Reference Schema
 export const ReferenceSchema = z.object({
   name: z.string(),
   reference: z.string(),
   contact: z.string().optional(),
 });
 
-// Volunteer Schema
 export const VolunteerSchema = z.object({
   organization: z.string(),
   position: z.string(),
@@ -148,21 +131,18 @@ export const VolunteerSchema = z.object({
   highlights: z.array(z.string()).optional(),
 });
 
-// Media Schema
 export const MediaSchema = z.object({
   type: z.string(),
   url: z.string(),
   title: z.string().optional(),
 });
 
-// Link Schema
 export const LinkSchema = z.object({
   title: z.string(),
   url: z.string(),
   description: z.string().optional(),
 });
 
-// Main CV Data Schema
 export const CVDataSchema = z.object({
   basics: BasicsSchema,
   about: AboutSchema,
@@ -182,7 +162,6 @@ export const CVDataSchema = z.object({
   locations: z.array(LocationSchema).optional(),
 });
 
-// TypeScript Types
 export type CVData = z.infer<typeof CVDataSchema>;
 export type Basics = z.infer<typeof BasicsSchema>;
 export type About = z.infer<typeof AboutSchema>;

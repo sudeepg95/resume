@@ -1,4 +1,6 @@
-{
+import type { CVData } from '../utils/schemas/cv-schema';
+
+export const cvData: CVData = {
   "basics": {
     "name": "Sudeep G",
     "label": "Senior Software Engineer | Full-Stack Developer",
@@ -81,6 +83,42 @@
       "city": "Remote",
       "state": null,
       "country": ""
+    },
+    {
+      "name": "CoffeeBeans Consulting",
+      "position": "Software Engineer",
+      "type": null,
+      "url": null,
+      "start_date": "2020-01-01",
+      "end_date": "2021-11-01",
+      "summary": "Contributed to full-stack development and performance optimization of web applications, enhancing user engagement and brand visibility.",
+      "highlights": [
+        "Resolved complex web-related challenges, improving system stability and user experience across multiple platforms.",
+        "Implemented new features and performance enhancements for React-based systems, increasing application responsiveness and user satisfaction.",
+        "Executed comprehensive performance analysis and optimizations for web applications, leading to measurable improvements in load speed and efficiency.",
+        "Developed internal tools and applications designed to boost engagement and brand awareness, fostering positive reinforcement across the organization."
+      ],
+      "city": "Bengaluru",
+      "state": null,
+      "country": "India"
+    },
+    {
+      "name": "QBurst Technologies Pvt Ltd.",
+      "position": "Senior Software Engineer",
+      "type": null,
+      "url": null,
+      "start_date": "2016-06-01",
+      "end_date": "2020-01-01",
+      "summary": "Led full-stack development, architectural design, and cross-functional communication for diverse projects, delivering robust web and API solutions.",
+      "highlights": [
+        "Engineered multiple Single Page Applications (SPAs) from inception using React, Angular, and Vue.js, adhering to industry best practices and delivering highly performant user interfaces.",
+        "Designed and implemented robust REST API endpoints with NodeJS, facilitating seamless integration across diverse microservices.",
+        "Contributed to critical architectural design phases for various projects, ensuring scalable and maintainable software solutions.",
+        "Fostered effective cross-functional collaboration and communication with diverse stakeholders, streamlining project workflows and resolving complex technical challenges."
+      ],
+      "city": "Calicut",
+      "state": null,
+      "country": "India"
     }
   ],
   "volunteer": [],
@@ -114,6 +152,18 @@
       "date": null,
       "issuer": "Coursera",
       "url": null
+    },
+    {
+      "name": "Deep Learning Specialization",
+      "date": null,
+      "issuer": "deeplearning.ai (Coursera)",
+      "url": null
+    },
+    {
+      "name": "Machine Learning",
+      "date": null,
+      "issuer": "Andrew Ng (Coursera)",
+      "url": null
     }
   ],
   "skills": [
@@ -133,6 +183,18 @@
         "Express",
         "NestJS"
       ]
+    },
+    {
+      "name": "Development Tools",
+      "keywords": ["Sublime", "VSCode", "IntelliJ", "nano"]
+    },
+    {
+      "name": "Technologies",
+      "keywords": ["HTML5", "SCSS/LESS/CSS3", "nginx", "apache2"]
+    },
+    {
+      "name": "Other Tools",
+      "keywords": ["Git", "Webpack", "Jest", "Vercel"]
     }
   ],
   "interests": [],
@@ -140,4 +202,6 @@
   "projects": [],
   "links": [],
   "locations": []
-}
+};
+
+export default cvData;
