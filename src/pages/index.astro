@@ -1,16 +1,26 @@
 ---
+// src/pages/index.astro
+import ResumeLayout from '../layouts/ResumeLayout.astro';
+import Header from '../components/sections/Header.astro';
+import About from '../components/sections/About.astro';
+import WorkExperience from '../components/sections/WorkExperience.astro';
+import Skills from '../components/sections/Skills.astro';
+import Education from '../components/sections/Education.astro';
 
+const pageTitle =
+  'John Alexander Smith - Senior Software Engineer | Full-Stack Developer';
+const pageDescription =
+  'Experienced Senior Software Engineer specializing in full-stack development, cloud architecture, and team leadership. Expert in React, Node.js, Python, and modern web technologies.';
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body>
-    <h1>Astro</h1>
-  </body>
-</html>
+<ResumeLayout
+  title={pageTitle}
+  description={pageDescription}
+  theme="professional"
+>
+  <Header />
+  <About />
+  <WorkExperience />
+  <Skills />
+  <Education />
+</ResumeLayout>

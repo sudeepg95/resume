@@ -1,0 +1,421 @@
+---
+// src/components/sections/WorkExperience.astro
+---
+
+<section class="work-section">
+  <h2 class="section-title">
+    <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor">
+      <path
+        d="M10,2H14A2,2 0 0,1 16,4V6H20A2,2 0 0,1 22,8V19A2,2 0 0,1 20,21H4A2,2 0 0,1 2,19V8A2,2 0 0,1 4,6H8V4A2,2 0 0,1 10,2M14,6V4H10V6H14Z"
+      ></path>
+    </svg>
+    Work Experience
+  </h2>
+
+  <div class="work-timeline">
+    <!-- Senior Software Engineer at TechCorp -->
+    <article class="work-item">
+      <div class="work-header">
+        <div class="work-main">
+          <h3 class="position">Senior Software Engineer</h3>
+          <div class="company">
+            <a
+              href="https://techcorp.example.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="company-link"
+            >
+              TechCorp Solutions
+            </a>
+            <span class="work-type">(Full-time)</span>
+          </div>
+        </div>
+
+        <div class="work-meta">
+          <div class="date-info">
+            <span class="date-range">Jan 2022 - Present</span>
+            <span class="duration">(2 yrs 3 mos)</span>
+          </div>
+          <div class="location">San Francisco, CA</div>
+        </div>
+      </div>
+
+      <div class="work-summary">
+        <p>
+          Led UI architectural initiatives and drove significant code migrations
+          to enhance a next-generation SaaS platform serving 100K+ users.
+        </p>
+      </div>
+
+      <div class="work-highlights">
+        <ul class="highlights-list">
+          <li class="highlight-item">
+            Architected and implemented critical UI architectural decisions,
+            optimizing front-end performance by 40% for the main platform
+          </li>
+          <li class="highlight-item">
+            Led and executed large-scale migration from legacy Angular to React
+            for 15+ modules, improving developer productivity by 60%
+          </li>
+          <li class="highlight-item">
+            Mentored team of 6 junior developers, establishing best practices
+            for code review and testing protocols
+          </li>
+          <li class="highlight-item">
+            Implemented comprehensive CI/CD pipeline reducing deployment time
+            from 2 hours to 15 minutes
+          </li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- Software Engineer at InnovateTech -->
+    <article class="work-item">
+      <div class="work-header">
+        <div class="work-main">
+          <h3 class="position">Software Engineer</h3>
+          <div class="company">
+            <a
+              href="https://innovatetech.example.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="company-link"
+            >
+              InnovateTech
+            </a>
+            <span class="work-type">(Contract)</span>
+          </div>
+        </div>
+
+        <div class="work-meta">
+          <div class="date-info">
+            <span class="date-range">Mar 2020 - Dec 2021</span>
+            <span class="duration">(1 yr 10 mos)</span>
+          </div>
+          <div class="location">Remote</div>
+        </div>
+      </div>
+
+      <div class="work-summary">
+        <p>
+          Delivered comprehensive web and mobile solutions, focusing on
+          high-performance applications for diverse client projects in fintech
+          and e-commerce.
+        </p>
+      </div>
+
+      <div class="work-highlights">
+        <ul class="highlights-list">
+          <li class="highlight-item">
+            Developed scalable web applications using React and Node.js, serving
+            50K+ concurrent users
+          </li>
+          <li class="highlight-item">
+            Built cross-platform mobile applications using React Native,
+            achieving 95% code reuse between iOS and Android
+          </li>
+          <li class="highlight-item">
+            Optimized database queries and API performance, reducing average
+            response time by 65%
+          </li>
+          <li class="highlight-item">
+            Collaborated with design team to implement pixel-perfect, responsive
+            user interfaces
+          </li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- Full Stack Developer at StartupCo -->
+    <article class="work-item">
+      <div class="work-header">
+        <div class="work-main">
+          <h3 class="position">Full Stack Developer</h3>
+          <div class="company">
+            <span>StartupCo</span>
+            <span class="work-type">(Full-time)</span>
+          </div>
+        </div>
+
+        <div class="work-meta">
+          <div class="date-info">
+            <span class="date-range">Jun 2018 - Feb 2020</span>
+            <span class="duration">(1 yr 9 mos)</span>
+          </div>
+          <div class="location">Austin, TX</div>
+        </div>
+      </div>
+
+      <div class="work-summary">
+        <p>
+          Contributed to full-stack development and performance optimization of
+          core platform, driving user engagement and platform scalability during
+          rapid growth phase.
+        </p>
+      </div>
+
+      <div class="work-highlights">
+        <ul class="highlights-list">
+          <li class="highlight-item">
+            Built and maintained RESTful APIs using Express.js and MongoDB,
+            handling 1M+ requests daily
+          </li>
+          <li class="highlight-item">
+            Implemented real-time features using WebSocket connections,
+            improving user engagement by 35%
+          </li>
+          <li class="highlight-item">
+            Developed comprehensive test suites achieving 85% code coverage
+            across front-end and back-end
+          </li>
+          <li class="highlight-item">
+            Contributed to infrastructure setup using Docker and AWS services
+            (EC2, RDS, S3)
+          </li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</section>
+
+<style>
+  .work-section {
+    margin: 2rem 0;
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 2rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--color-primary);
+  }
+
+  .section-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .work-timeline {
+    position: relative;
+  }
+
+  .work-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-border);
+  }
+
+  .work-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+    padding-left: 2rem;
+    padding: 1.5rem;
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    transition: all var(--transition-normal);
+  }
+
+  .work-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 2rem;
+    width: 12px;
+    height: 12px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    border: 2px solid var(--color-background);
+  }
+
+  .work-item:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
+    transform: translateX(4px);
+  }
+
+  .work-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    gap: 1rem;
+  }
+
+  .work-main {
+    flex: 1;
+  }
+
+  .position {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0 0 0.5rem 0;
+  }
+
+  .company {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .company-link {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transition-fast);
+  }
+
+  .company-link:hover {
+    text-decoration: underline;
+  }
+
+  .work-type {
+    font-style: italic;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  .work-meta {
+    text-align: right;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+  }
+
+  .date-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+  }
+
+  .date-range {
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  .duration {
+    font-size: 0.75rem;
+    opacity: 0.8;
+  }
+
+  .location {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .work-summary {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: var(--color-background-secondary);
+    border-radius: var(--border-radius);
+    border-left: 3px solid var(--color-primary);
+  }
+
+  .work-summary p {
+    margin: 0;
+    font-style: italic;
+    color: var(--color-text-secondary);
+  }
+
+  .work-highlights {
+    margin-top: 1rem;
+  }
+
+  .highlights-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .highlight-item {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+    color: var(--color-text);
+  }
+
+  .highlight-item::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    top: 0.125rem;
+  }
+
+  .highlight-item:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    .work-timeline::before {
+      display: none;
+    }
+
+    .work-item {
+      padding-left: 1.5rem;
+    }
+
+    .work-item::before {
+      display: none;
+    }
+
+    .work-item:hover {
+      transform: none;
+    }
+
+    .work-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .work-meta {
+      text-align: left;
+    }
+
+    .date-info {
+      align-items: flex-start;
+    }
+  }
+
+  @media print {
+    .work-timeline::before {
+      display: none;
+    }
+
+    .work-item {
+      break-inside: avoid;
+      border: none;
+      border-bottom: 1px solid var(--color-border);
+      border-radius: 0;
+      padding: 1rem 0;
+      box-shadow: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .work-item::before {
+      display: none;
+    }
+
+    .work-item:hover {
+      box-shadow: none;
+      border-color: var(--color-border);
+      transform: none;
+    }
+  }
+</style>
