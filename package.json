@@ -1,0 +1,42 @@
+{
+  "name": "sudeep-resume",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "lint": "eslint . --ext .js,.ts,.astro",
+    "lint:fix": "eslint . --ext .js,.ts,.astro --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "type-check": "astro check",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "build:analyze": "astro build --analyze",
+    "optimize": "npm run build && npm run compress",
+    "compress": "npx imagemin 'dist/**/*.{jpg,png,svg}' --out-dir=dist"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.5.0",
+    "@astrojs/tailwind": "^6.0.2",
+    "astro": "^5.13.2",
+    "astro-eslint-parser": "^1.2.2",
+    "gray-matter": "^4.0.3",
+    "html2pdf.js": "^0.10.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "web-vitals": "^5.1.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@types/node": "^24.3.0",
+    "@typescript-eslint/eslint-plugin": "^8.39.1",
+    "@typescript-eslint/parser": "^8.39.1",
+    "eslint": "^9.33.0",
+    "prettier": "^3.6.2",
+    "vitest": "^3.2.4"
+  }
+}
