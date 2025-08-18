@@ -108,17 +108,15 @@ const structuredData = cvData
       description={description}
     />
 
-    <main class="max-w-letter mx-auto md:my-8 px-8 pb-2 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 shadow-lg rounded-lg min-h-letter print:max-w-none print:mx-0 print:my-0 print:px-0 print:py-0 print:shadow-none print:rounded-none md:rounded">
+    <main class="cv-container max-w-letter mx-auto md:my-8 px-8 pb-2 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 shadow-lg rounded-lg min-h-letter print:max-w-none print:mx-0 print:my-0 print:px-0 print:py-0 print:shadow-none print:rounded-none md:rounded">
       <slot />
     </main>
 
     <script>
       import { themeManager } from '../utils/theme-manager';
-      import { initProductionOptimizations } from '../utils/production-optimizer';
 
       document.addEventListener('DOMContentLoaded', () => {
         themeManager.init();
-        initProductionOptimizations();
       });
     </script>
   </body>

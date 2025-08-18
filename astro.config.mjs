@@ -22,14 +22,10 @@ export default defineConfig({
         output: {
           manualChunks: {
             vendor: ['zod'],
-            'pdf-export': ['html2pdf.js'],
             analytics: ['../utils/analytics.ts'],
           },
         },
       },
-    },
-    optimizeDeps: {
-      include: ['html2pdf.js'],
     },
   },
 });

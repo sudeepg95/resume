@@ -178,8 +178,35 @@ html.dark {
 }
 
 .print-mode {
+  .no-print,
+  #theme-switcher,
+  #export-pdf,
+  [data-social-share],
+  .theme-switcher,
+  .export-button,
+  .social-share,
+  .action-button {
+    display: none !important;
+  }
+
+  body {
+    @apply bg-white text-gray-900 !important;
+  }
+
+  .cv-container,
+  .max-w-letter {
+    @apply shadow-none m-0 p-4 rounded-none max-w-none !important;
+  }
+
   @media screen {
-    .no-print {
+    .no-print,
+    #theme-switcher,
+    #export-pdf,
+    [data-social-share],
+    .theme-switcher,
+    .export-button,
+    .social-share,
+    .action-button {
       display: none !important;
     }
 
