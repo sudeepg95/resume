@@ -16,9 +16,9 @@ const sortedEducation = [...education].sort((a, b) => {
 });
 ---
 
-<section class="education-section">
-  <h2 class="section-title">
-    <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor">
+<section class="my-8">
+  <h2 class="flex items-center gap-3 text-2xl font-semibold text-primary mb-8 pb-3 border-b-2 border-primary dark:text-accent dark:border-accent">
+    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
       <path
         d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"
       ></path>
@@ -28,7 +28,7 @@ const sortedEducation = [...education].sort((a, b) => {
 
 {
   sortedEducation.length > 0 && (
-    <div class="education-timeline">
+    <div class="flex flex-col gap-8">
       {sortedEducation.map((edu) => {
         const dateRange = formatDateRange(edu.start_date, edu.end_date);
         const location = formatLocation({
@@ -38,38 +38,38 @@ const sortedEducation = [...education].sort((a, b) => {
         });
 
         return (
-          <article class="education-item">
-            <div class="education-header">
-              <div class="education-main">
-                <h3 class="degree">{edu.study_type} in {edu.area}</h3>
-                <div class="institution">
+          <article class="p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg transition-all duration-200 hover:shadow-md hover:border-blue-600 hover:-translate-y-1 print:break-inside-avoid print:border-none print:border-b print:border-gray-200 print:rounded-none print:px-0 print:py-4 print:shadow-none print:hover:border-gray-200 print:hover:translate-y-0 animate-in fade-in-50 slide-in-from-right-8 duration-600">
+            <div class="flex justify-between items-start mb-4 gap-4 md:items-start">
+              <div class="flex-1">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">{edu.study_type} in {edu.area}</h3>
+                <div class="mb-1">
                   {edu.url ? (
                     <a
                       href={sanitizeUrl(edu.url)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="institution-link"
+                      class="text-blue-600 dark:text-blue-400 no-underline font-medium text-lg hover:underline transition-colors duration-150"
                     >
                       {edu.institution}
                     </a>
                   ) : (
-                    <span>{edu.institution}</span>
+                    <span class="text-lg font-medium text-gray-900 dark:text-gray-100">{edu.institution}</span>
                   )}
                 </div>
               </div>
 
-              <div class="education-meta">
-                <div class="date-info">
-                  <span class="date-range">{dateRange}</span>
+              <div class="text-right text-sm text-gray-600 dark:text-gray-400 flex-shrink-0 md:text-left">
+                <div class="mb-2">
+                  <span class="font-medium text-gray-900 dark:text-gray-100">{dateRange}</span>
                 </div>
-                {location && <div class="location">{location}</div>}
-                {edu.score && <div class="grade">{edu.score}</div>}
+                {location && <div class="mb-1 text-xs">{location}</div>}
+                {edu.score && <div class="text-xs font-medium text-blue-600 dark:text-blue-400">{edu.score}</div>}
               </div>
             </div>
 
             {edu.courses && edu.courses.length > 0 && (
-              <div class="education-details">
-                <p>
+              <div class="leading-normal">
+                <p class="mb-0 text-text">
                   <strong>Relevant Coursework:</strong> {edu.courses.join(', ')}
                 </p>
               </div>
@@ -81,158 +81,3 @@ const sortedEducation = [...education].sort((a, b) => {
   )
 }
 </section>
-
-<style>
-  .education-section {
-    margin: 2rem 0;
-  }
-
-  .section-title {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--color-primary);
-    margin-bottom: 2rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 2px solid var(--color-primary);
-  }
-
-  :global([data-mode='dark']) .section-title {
-    color: var(--color-accent) !important;
-    border-bottom-color: var(--color-accent) !important;
-  }
-
-  .section-icon {
-    width: 1.5rem;
-    height: 1.5rem;
-    color: inherit;
-  }
-
-  .education-timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .education-item {
-    padding: 1.5rem;
-    background: var(--color-background);
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius-md);
-    transition: all var(--transition-normal);
-  }
-
-  .education-item:hover {
-    box-shadow: var(--shadow-md);
-    border-color: var(--color-primary);
-  }
-
-  .education-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 1rem;
-    gap: 1rem;
-  }
-
-  .education-main {
-    flex: 1;
-  }
-
-  .degree {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--color-text);
-    margin: 0 0 0.5rem 0;
-  }
-
-  .institution {
-    margin-bottom: 0.25rem;
-  }
-
-  .institution-link {
-    color: var(--color-primary);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1.1rem;
-  }
-
-  .institution-link:hover {
-    text-decoration: underline;
-  }
-
-  .specialization {
-    font-size: 0.9rem;
-    color: var(--color-text-secondary);
-    font-style: italic;
-  }
-
-  .education-meta {
-    text-align: right;
-    font-size: 0.875rem;
-    color: var(--color-text-secondary);
-    flex-shrink: 0;
-  }
-
-  .date-info {
-    margin-bottom: 0.5rem;
-  }
-
-  .date-range {
-    font-weight: 500;
-    color: var(--color-text);
-  }
-
-  .location {
-    margin-bottom: 0.25rem;
-    font-size: 0.8rem;
-  }
-
-  .grade {
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--color-primary);
-  }
-
-  .education-details {
-    line-height: 1.6;
-  }
-
-  .education-details p {
-    margin-bottom: 0.75rem;
-    color: var(--color-text);
-  }
-
-  .education-details p:last-child {
-    margin-bottom: 0;
-  }
-
-  @media (max-width: 768px) {
-    .education-header {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .education-meta {
-      text-align: left;
-    }
-  }
-
-  @media print {
-    .education-item {
-      break-inside: avoid;
-      border: none;
-      border-bottom: 1px solid var(--color-border);
-      border-radius: 0;
-      padding: 1rem 0;
-      box-shadow: none;
-    }
-
-    .education-item:hover {
-      box-shadow: none;
-      border-color: var(--color-border);
-    }
-  }
-</style>

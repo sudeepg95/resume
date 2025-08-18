@@ -2,6 +2,7 @@
 import type { CVData } from '../utils/schemas/cv-schema';
 import ThemeSwitcher from '../components/ui/theme-switcher.astro';
 import SocialShare from '../components/ui/social-share.astro';
+import ExportButton from '../components/ui/export-button.astro';
 
 interface Props {
   title: string;
@@ -99,7 +100,7 @@ const structuredData = cvData
   <body>
     <ThemeSwitcher />
 
-    <!-- <ExportButton /> -->
+    <ExportButton />
 
     <SocialShare 
       title={title}
@@ -107,57 +108,18 @@ const structuredData = cvData
       description={description}
     />
 
-    <main class="cv-container">
+    <main class="max-w-letter mx-auto md:my-8 px-8 pb-2 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 shadow-lg rounded-lg min-h-letter print:max-w-none print:mx-0 print:my-0 print:px-0 print:py-0 print:shadow-none print:rounded-none md:rounded">
       <slot />
     </main>
 
     <script>
       import { themeManager } from '../utils/theme-manager';
-      import { animationManager } from '../utils/animations';
       import { initProductionOptimizations } from '../utils/production-optimizer';
 
       document.addEventListener('DOMContentLoaded', () => {
         themeManager.init();
-
-        animationManager.init({
-          threshold: 0.1,
-          rootMargin: '0px 0px -50px 0px',
-          stagger: 100,
-        });
-
         initProductionOptimizations();
       });
     </script>
   </body>
 </html>
-
-<style>
-  .cv-container {
-    max-width: 8.5in;
-    margin: 2rem auto;
-    padding: 2rem;
-    background: var(--color-background);
-    color: var(--color-text);
-    box-shadow: var(--shadow-lg);
-    border-radius: var(--border-radius-lg);
-    min-height: 11in;
-  }
-
-  @media (max-width: 768px) {
-    .cv-container {
-      margin: 1rem;
-      padding: 1rem;
-      border-radius: var(--border-radius);
-    }
-  }
-
-  @media print {
-    .cv-container {
-      max-width: none;
-      margin: 0;
-      padding: 0;
-      box-shadow: none;
-      border-radius: 0;
-    }
-  }
-</style>

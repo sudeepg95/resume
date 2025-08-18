@@ -11,7 +11,6 @@ const {
   name,
   label,
   image,
-  bg_image,
   email,
   phone,
   url,
@@ -22,54 +21,49 @@ const {
 
 const processedProfiles =
   profiles
-    ?.map((profile) => ({
+    ?.filter((profile) => profile.network !== 'Email' && profile.network !== 'Phone')
+    .map((profile) => ({
       ...profile,
-      url:
-        profile.network === 'Email'
-          ? `mailto:${profile.url}`
-          : profile.network === 'Phone'
-            ? `tel:${profile.url}`
-            : sanitizeUrl(profile.url),
+      url: sanitizeUrl(profile.url),
       icon: getNetworkIcon(profile.network),
     }))
     .filter((profile) => profile.url) || [];
 ---
 
 <header
-  class="resume-header"
-  style={bg_image ? `background-image: url(${bg_image})` : ''}
+  class="relative theme-bg text-white overflow-hidden -mx-8 mb-0 rounded-t-lg print:bg-none print:text-gray-900 dark:print:text-gray-100 print:border-b-2 print:border-blue-600 print:mx-0 print:rounded-none md:-mx-4"
 >
-  {bg_image && <div class="header-overlay" />}
+  <div class="absolute inset-0 bg-black bg-opacity-10 dark:bg-opacity-20" />
 
-  <div class="header-content">
-    <div class="header-main">
+  <div class="relative z-10 px-8 py-12 text-center print:px-0 md:px-4">
+    <div class="flex flex-col items-center gap-6 mb-8">
       {
         image && (
-          <div class="profile-image-container">
+          <div class="relative">
             <img
               src={image}
               alt={`${name} profile photo`}
-              class="profile-image"
+              class="w-30 h-30 rounded-full border-4 border-white border-opacity-20 object-cover shadow-profile print:w-20 print:h-20 print:border-2 print:border-gray-200 dark:print:border-gray-700"
               loading="eager"
             />
           </div>
         )
       }
 
-      <div class="header-text">
-        <h1 class="name">{name}</h1>
-        <h2 class="title">{label}</h2>
+      <div class="flex flex-col items-center gap-2">
+        <h1 class="name text-5xl font-bold m-0 text-shadow-header print:text-4xl print:text-gray-900 dark:print:text-gray-100 md:text-4xl animate-in fade-in-0 zoom-in-95 duration-1000 delay-500" data-text={name}>{name}</h1>
+        <h2 class="text-2xl font-normal m-0 opacity-90 print:text-xl print:text-gray-900 dark:print:text-gray-100 md:text-xl">{label}</h2>
 
         {
           url && (
             <a
               href={sanitizeUrl(url)}
-              class="website-link"
+              class="inline-flex items-center gap-2 text-white hover:text-white transition-colors duration-150 print:text-gray-900 dark:print:text-gray-100"
               target="_blank"
               rel="noopener noreferrer"
             >
               <span class="sr-only">Visit website</span>
-              <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+              <svg class="w-5 h-5 opacity-80" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M10.59 13.41c.41.39.41 1.03 0 1.42-.39.39-1.03.39-1.42 0a5.003 5.003 0 0 1 0-7.07l3.54-3.54a5.003 5.003 0 0 1 7.07 0 5.003 5.003 0 0 1 0 7.07l-1.49 1.49c.01-.82-.12-1.64-.4-2.42l.47-.48a2.982 2.982 0 0 0 0-4.24 2.982 2.982 0 0 0-4.24 0l-3.53 3.53a2.982 2.982 0 0 0 0 4.24zm2.82-4.24c.39-.39 1.03-.39 1.42 0a5.003 5.003 0 0 1 0 7.07l-3.54 3.54a5.003 5.003 0 0 1-7.07 0 5.003 5.003 0 0 1 0-7.07l1.49-1.49c-.01.82.12 1.64.4 2.42l-.47.48a2.982 2.982 0 0 0 0 4.24 2.982 2.982 0 0 0 4.24 0l3.53-3.53a2.982 2.982 0 0 0 0-4.24.996.996 0 0 1 0-1.42z" />
               </svg>
             </a>
@@ -78,23 +72,23 @@ const processedProfiles =
       </div>
     </div>
 
-    <div class="contact-info">
-      <div class="contact-item">
-        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+    <div class="flex flex-wrap gap-8 justify-center mb-8 print:flex-col print:gap-4 md:gap-4">
+      <div class="flex items-center gap-2 text-base">
+        <svg class="w-5 h-5 opacity-80" viewBox="0 0 24 24" fill="currentColor">
           <path
             d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
           ></path>
         </svg>
-        <a href={`mailto:${email}`} class="contact-link">{email}</a>
+        <a href={`mailto:${email}`} class="text-white hover:text-white transition-colors duration-150 no-underline print:text-gray-900 dark:print:text-gray-100">{email}</a>
       </div>
 
       {
         phone && (
-          <div class="contact-item">
-            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+          <div class="flex items-center gap-2 text-base">
+            <svg class="w-5 h-5 opacity-80" viewBox="0 0 24 24" fill="currentColor">
               <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
             </svg>
-            <a href={`tel:${phone}`} class="contact-link">
+            <a href={`tel:${phone}`} class="text-white hover:text-white transition-colors duration-150 no-underline print:text-gray-900 dark:print:text-gray-100">
               {phone}
             </a>
           </div>
@@ -103,8 +97,8 @@ const processedProfiles =
 
       {
         location && (
-          <div class="contact-item">
-            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+          <div class="flex items-center gap-2 text-base">
+            <svg class="w-5 h-5 opacity-80" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
             </svg>
             <span>
@@ -118,11 +112,11 @@ const processedProfiles =
 
     {
       processedProfiles.length > 0 && (
-        <div class="social-links">
+        <div class="flex flex-wrap gap-4 justify-center print:hidden">
           {processedProfiles.map((profile) => (
             <a
               href={profile.url!}
-              class="social-link"
+              class="flex items-center gap-2 px-6 py-3 bg-overlay-light border border-border-overlay rounded-full text-white no-underline text-sm font-medium transition-all duration-200 backdrop-blur-10 hover:bg-overlay-heavy hover:-translate-y-1 hover:scale-105"
               target="_blank"
               rel="noopener noreferrer"
               title={`${profile.network}${profile.username ? ` (${profile.username})` : ''}`}
@@ -137,11 +131,11 @@ const processedProfiles =
 
     {
       actions && actions.length > 0 && (
-        <div class="header-actions">
+        <div class="flex flex-wrap gap-4 justify-center mt-6">
           {actions.map((action) => (
             <a
               href={action.url}
-              class={`action-button action-${action.type}`}
+              class={`action-button action-${action.type} inline-flex items-center gap-2 px-6 py-3 bg-white text-primary font-medium rounded-lg transition-all duration-200 hover:bg-gray-50 hover:-translate-y-1 hover:scale-105`}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -156,135 +150,6 @@ const processedProfiles =
 </header>
 
 <style>
-  .resume-header {
-    position: relative;
-    background: linear-gradient(
-      135deg,
-      var(--color-primary) 0%,
-      var(--color-accent) 100%
-    );
-    color: var(--color-white);
-    overflow: hidden;
-    margin: -2rem -2rem 0 -2rem;
-    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
-  }
-
-  .header-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--color-shadow-medium);
-  }
-
-  .header-content {
-    position: relative;
-    z-index: 1;
-    padding: 3rem 2rem;
-    text-align: center;
-  }
-
-  .header-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-  }
-
-  .profile-image-container {
-    position: relative;
-  }
-
-  .profile-image {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border: 4px solid var(--color-border-overlay);
-    object-fit: cover;
-    box-shadow: 0 8px 32px var(--color-shadow-extra);
-  }
-
-  .header-text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .name {
-    font-size: 3rem;
-    font-weight: 700;
-    margin: 0;
-    text-shadow: 0 2px 4px var(--color-shadow-extra);
-  }
-
-  .title {
-    font-size: 1.5rem;
-    font-weight: 400;
-    margin: 0;
-    opacity: 0.9;
-  }
-
-  .contact-info {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
-    margin-bottom: 2rem;
-  }
-
-  .contact-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 1rem;
-  }
-
-  .icon {
-    width: 1.25rem;
-    height: 1.25rem;
-    opacity: 0.8;
-  }
-
-  .contact-link {
-    text-decoration: none;
-    transition: color var(--transition-fast);
-  }
-
-  .contact-link:hover {
-    color: var(--color-white);
-  }
-
-  .social-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-  }
-
-  .social-link {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background: var(--color-overlay-light);
-    border: 1px solid var(--color-border-overlay);
-    border-radius: 2rem;
-    color: var(--color-white);
-    text-decoration: none;
-    font-size: 0.875rem;
-    font-weight: 500;
-    transition: all var(--transition-fast);
-    backdrop-filter: blur(10px);
-  }
-
-  .social-link:hover {
-    background: var(--color-overlay-heavy);
-    transform: translateY(-2px);
-  }
-
   .social-icon {
     width: 1rem;
     height: 1rem;
@@ -292,6 +157,54 @@ const processedProfiles =
     background-repeat: no-repeat;
   }
 
+  .typing::after {
+    content: '|';
+    @apply animate-pulse;
+  }
+</style>
+
+<script>
+  function initTypingAnimation() {
+    const nameElement = document.querySelector('.name');
+    if (!nameElement) return;
+
+    const fullText = nameElement.getAttribute('data-text') || nameElement.textContent || '';
+    
+    if (window.matchMedia('print').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
+    nameElement.textContent = '';
+    nameElement.classList.add('typing');
+
+    let i = 0;
+    const typeSpeed = 100;
+    
+    function typeWriter() {
+      if (i < fullText.length && nameElement) {
+        nameElement.textContent += fullText.charAt(i);
+        i++;
+        setTimeout(typeWriter, typeSpeed);
+      } else {
+        setTimeout(() => {
+          if (nameElement) {
+            nameElement.classList.remove('typing');
+          }
+        }, 1000);
+      }
+    }
+
+    setTimeout(typeWriter, 1500);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTypingAnimation);
+  } else {
+    initTypingAnimation();
+  }
+</script>
+
+<style>
   .social-icon.linkedin {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'/%3E%3C/svg%3E");
   }
@@ -310,57 +223,5 @@ const processedProfiles =
 
   .social-icon.phone {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z'/%3E%3C/svg%3E");
-  }
-
-  @media (max-width: 768px) {
-    .resume-header {
-      margin: -1rem -1rem 0 -1rem;
-    }
-
-    .header-content {
-      padding: 2rem 1rem;
-    }
-
-    .name {
-      font-size: 2.5rem;
-    }
-
-    .title {
-      font-size: 1.25rem;
-    }
-
-    .contact-info {
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .social-links {
-      flex-direction: column;
-      align-items: center;
-    }
-  }
-
-  @media print {
-    .resume-header {
-      background: none !important;
-      color: var(--color-text) !important;
-      border-bottom: 2px solid var(--color-primary);
-      margin: 0;
-      border-radius: 0;
-    }
-
-    .header-overlay {
-      display: none;
-    }
-
-    .profile-image {
-      width: 80px;
-      height: 80px;
-      border: 2px solid var(--color-border);
-    }
-
-    .social-links {
-      display: none;
-    }
   }
 </style>

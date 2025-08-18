@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable no-console */
 interface AnalyticsEvent {
   name: string;
   properties?: Record<string, any>;
@@ -81,13 +79,6 @@ class AnalyticsManager {
         if (target.closest('#export-pdf')) {
           this.trackEvent('pdf_export_attempt');
         }
-      });
-
-      window.addEventListener('themeChange', (e: any) => {
-        this.trackEvent('theme_change', {
-          theme: e.detail.theme,
-          previous_theme: this.getCurrentTheme(),
-        });
       });
     });
   }

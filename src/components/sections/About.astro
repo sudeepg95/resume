@@ -11,9 +11,9 @@ const { summary } = about;
 const paragraphs = summary.split('\n\n').filter((p) => p.trim().length > 0);
 ---
 
-<section class="about-section">
-  <h2 class="section-title">
-    <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor">
+<section class="my-8">
+  <h2 class="flex items-center gap-3 text-2xl font-semibold text-primary mb-6 pb-3 border-b-2 border-primary dark:text-accent dark:border-accent">
+    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
       <path
         d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 5.5V4C15 1.79 13.21 0 11 0S7 1.79 7 4V5.5L1 7V9L7 7.5V11C7 11.55 7.45 12 8 12S9 11.55 9 11V8.5L11 8V22H13V8L15 8.5V11C15 11.55 15.45 12 16 12S17 11.55 17 11V7.5L21 9Z"
       ></path>
@@ -21,70 +21,15 @@ const paragraphs = summary.split('\n\n').filter((p) => p.trim().length > 0);
     About
   </h2>
 
-  <div class="about-content">
+  <div class="py-4">
     {
       paragraphs.length > 1 ? (
         paragraphs.map((paragraph) => (
-          <p class="summary-text">{paragraph.trim()}</p>
+          <p class="text-lg leading-relaxed text-gray-900 dark:text-gray-100 mb-6 last:mb-0 print:text-base print:leading-normal">{paragraph.trim()}</p>
         ))
       ) : (
-        <p class="summary-text">{summary}</p>
+        <p class="text-lg leading-relaxed text-gray-900 dark:text-gray-100 print:text-base print:leading-normal">{summary}</p>
       )
     }
   </div>
 </section>
-
-<style>
-  .about-section {
-    margin: 2rem 0;
-  }
-
-  .section-title {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--color-primary);
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 2px solid var(--color-primary);
-  }
-
-  :global([data-mode='dark']) .section-title {
-    color: var(--color-accent) !important;
-    border-bottom-color: var(--color-accent) !important;
-  }
-
-  .section-icon {
-    width: 1.5rem;
-    height: 1.5rem;
-    color: inherit;
-  }
-
-  .about-content {
-    padding: 1rem 0;
-  }
-
-  .summary-text {
-    font-size: 1.125rem;
-    line-height: 1.8;
-    color: var(--color-text);
-    margin-bottom: 1.5rem;
-  }
-
-  .summary-text:last-child {
-    margin-bottom: 0;
-  }
-
-  @media print {
-    .about-section {
-      margin: 1rem 0;
-    }
-
-    .summary-text {
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-  }
-</style>

@@ -19,9 +19,9 @@ const sortedWork = [...work].sort((a, b) => {
 });
 ---
 
-<section class="work-section">
-  <h2 class="section-title">
-    <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor">
+<section class="my-8">
+  <h2 class="flex items-center gap-3 text-2xl font-semibold text-primary mb-8 pb-3 border-b-2 border-primary dark:text-accent dark:border-accent">
+    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
       <path
         d="M10,2H14A2,2 0 0,1 16,4V6H20A2,2 0 0,1 22,8V19A2,2 0 0,1 20,21H4A2,2 0 0,1 2,19V8A2,2 0 0,1 4,6H8V4A2,2 0 0,1 10,2M14,6V4H10V6H14Z"
       ></path>
@@ -31,7 +31,7 @@ const sortedWork = [...work].sort((a, b) => {
 
 {
   sortedWork.length > 0 && (
-    <div class="work-timeline">
+    <div class="relative before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-gray-200 dark:before:bg-gray-600 md:before:hidden print:before:hidden">
       {sortedWork.map((job) => {
         const dateRange = formatDateRange(job.start_date, job.end_date);
         const duration = calculateDuration(job.start_date, job.end_date);
@@ -42,47 +42,47 @@ const sortedWork = [...work].sort((a, b) => {
         });
 
         return (
-          <article class="work-item">
-            <div class="work-header">
-              <div class="work-main">
-                <h3 class="position">{job.position}</h3>
-                <div class="company">
+          <article class="relative mb-10 pl-8 p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg transition-all duration-200 hover:shadow-md hover:border-blue-600 hover:translate-x-1 md:pl-6 md:hover:translate-x-0 print:break-inside-avoid print:border-none print:border-b print:border-gray-200 print:rounded-none print:px-0 print:py-4 print:mb-6 print:shadow-none print:hover:border-gray-200 print:hover:translate-x-0 animate-in fade-in-50 slide-in-from-left-8 duration-500 before:content-[''] before:absolute before:-left-1.5 before:top-8 before:w-3 before:h-3 before:bg-blue-600 before:rounded-full before:border-2 before:border-white dark:before:border-gray-800 md:before:hidden print:before:hidden">
+            <div class="flex justify-between items-start mb-4 gap-4 md:items-start">
+              <div class="flex-1">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">{job.position}</h3>
+                <div class="text-base text-gray-600 dark:text-gray-400 flex items-center gap-2 flex-wrap">
                   {job.url ? (
                     <a
                       href={sanitizeUrl(job.url)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="company-link"
+                      class="text-blue-600 dark:text-blue-400 no-underline font-medium transition-colors duration-150 hover:underline"
                     >
                       {job.name}
                     </a>
                   ) : (
-                    <span>{job.name}</span>
+                    <span class="font-medium text-gray-900 dark:text-gray-100">{job.name}</span>
                   )}
-                  {job.type && <span class="work-type">({job.type})</span>}
+                  {job.type && <span class="italic text-sm text-gray-600 dark:text-gray-400">({job.type})</span>}
                 </div>
               </div>
 
-              <div class="work-meta">
-                <div class="date-info">
-                  <span class="date-range">{dateRange}</span>
-                  <span class="duration">({duration})</span>
+              <div class="text-right text-sm text-gray-600 dark:text-gray-400 flex-shrink-0 md:text-left">
+                <div class="flex flex-col items-end gap-1 md:items-start">
+                  <span class="font-medium text-gray-900 dark:text-gray-100">{dateRange}</span>
+                  <span class="text-xs opacity-80">({duration})</span>
                 </div>
-                {location && <div class="location">{location}</div>}
+                {location && <div class="mt-2 text-xs">{location}</div>}
               </div>
             </div>
 
             {job.summary && (
-              <div class="work-summary">
-                <p>{job.summary}</p>
+              <div class="my-4 p-4 bg-gray-50 dark:bg-gray-700 rounded border-l-3 border-blue-600 dark:border-blue-400">
+                <p class="m-0 italic text-gray-600 dark:text-gray-400">{job.summary}</p>
               </div>
             )}
 
             {job.highlights && job.highlights.length > 0 && (
-              <div class="work-highlights">
-                <ul class="highlights-list">
+              <div class="mt-4">
+                <ul class="list-none p-0 m-0">
                   {job.highlights.map((highlight) => (
-                    <li class="highlight-item">{highlight}</li>
+                    <li class="relative pl-6 mb-3 last:mb-0 leading-normal text-gray-900 dark:text-gray-100 before:content-['▶'] before:absolute before:left-0 before:text-blue-600 dark:before:text-blue-400 before:text-xs before:top-0.5">{highlight}</li>
                   ))}
                 </ul>
               </div>
@@ -94,251 +94,3 @@ const sortedWork = [...work].sort((a, b) => {
   )
 }
 </section>
-
-<style>
-  .work-section {
-    margin: 2rem 0;
-  }
-
-  .section-title {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--color-primary);
-    margin-bottom: 2rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 2px solid var(--color-primary);
-  }
-
-  :global([data-mode='dark']) .section-title {
-    color: var(--color-accent) !important;
-    border-bottom-color: var(--color-accent) !important;
-  }
-
-  .section-icon {
-    width: 1.5rem;
-    height: 1.5rem;
-    color: inherit;
-  }
-
-  .work-timeline {
-    position: relative;
-  }
-
-  .work-timeline::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: var(--color-border);
-  }
-
-  .work-item {
-    position: relative;
-    margin-bottom: 2.5rem;
-    padding-left: 2rem;
-    padding: 1.5rem;
-    background: var(--color-background);
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius-md);
-    transition: all var(--transition-normal);
-  }
-
-  .work-item::before {
-    content: '';
-    position: absolute;
-    left: -6px;
-    top: 2rem;
-    width: 12px;
-    height: 12px;
-    background: var(--color-primary);
-    border-radius: 50%;
-    border: 2px solid var(--color-background);
-  }
-
-  .work-item:hover {
-    box-shadow: var(--shadow-md);
-    border-color: var(--color-primary);
-    transform: translateX(4px);
-  }
-
-  .work-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 1rem;
-    gap: 1rem;
-  }
-
-  .work-main {
-    flex: 1;
-  }
-
-  .position {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--color-text);
-    margin: 0 0 0.5rem 0;
-  }
-
-  .company {
-    font-size: 1rem;
-    color: var(--color-text-secondary);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
-
-  .company-link {
-    color: var(--color-primary);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color var(--transition-fast);
-  }
-
-  .company-link:hover {
-    text-decoration: underline;
-  }
-
-  .work-type {
-    font-style: italic;
-    font-size: 0.875rem;
-    color: var(--color-text-secondary);
-  }
-
-  .work-meta {
-    text-align: right;
-    font-size: 0.875rem;
-    color: var(--color-text-secondary);
-    flex-shrink: 0;
-  }
-
-  .date-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.25rem;
-  }
-
-  .date-range {
-    font-weight: 500;
-    color: var(--color-text);
-  }
-
-  .duration {
-    font-size: 0.75rem;
-    opacity: 0.8;
-  }
-
-  .location {
-    margin-top: 0.5rem;
-    font-size: 0.75rem;
-  }
-
-  .work-summary {
-    margin: 1rem 0;
-    padding: 1rem;
-    background: var(--color-background-secondary);
-    border-radius: var(--border-radius);
-    border-left: 3px solid var(--color-primary);
-  }
-
-  .work-summary p {
-    margin: 0;
-    font-style: italic;
-    color: var(--color-text-secondary);
-  }
-
-  .work-highlights {
-    margin-top: 1rem;
-  }
-
-  .highlights-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .highlight-item {
-    position: relative;
-    padding-left: 1.5rem;
-    margin-bottom: 0.75rem;
-    line-height: 1.6;
-    color: var(--color-text);
-  }
-
-  .highlight-item::before {
-    content: '▶';
-    position: absolute;
-    left: 0;
-    color: var(--color-primary);
-    font-size: 0.75rem;
-    top: 0.125rem;
-  }
-
-  .highlight-item:last-child {
-    margin-bottom: 0;
-  }
-
-  @media (max-width: 768px) {
-    .work-timeline::before {
-      display: none;
-    }
-
-    .work-item {
-      padding-left: 1.5rem;
-    }
-
-    .work-item::before {
-      display: none;
-    }
-
-    .work-item:hover {
-      transform: none;
-    }
-
-    .work-header {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .work-meta {
-      text-align: left;
-    }
-
-    .date-info {
-      align-items: flex-start;
-    }
-  }
-
-  @media print {
-    .work-timeline::before {
-      display: none;
-    }
-
-    .work-item {
-      break-inside: avoid;
-      border: none;
-      border-bottom: 1px solid var(--color-border);
-      border-radius: 0;
-      padding: 1rem 0;
-      box-shadow: none;
-      margin-bottom: 1.5rem;
-    }
-
-    .work-item::before {
-      display: none;
-    }
-
-    .work-item:hover {
-      box-shadow: none;
-      border-color: var(--color-border);
-      transform: none;
-    }
-  }
-</style>

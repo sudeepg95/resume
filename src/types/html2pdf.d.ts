@@ -1,4 +1,3 @@
-// Type declarations for html2pdf.js
 declare module 'html2pdf.js' {
   interface Html2PdfOptions {
     margin?: number | string;
