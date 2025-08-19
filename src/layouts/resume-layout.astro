@@ -1,8 +1,8 @@
 ---
-import type { CVData } from '@/utils/schemas/cv-schema';
-import ThemeSwitcher from '@/components/ui/theme-switcher.astro';
-import SocialShare from '@/components/ui/social-share.astro';
-import ExportButton from '@/components/ui/export-button.astro';
+import type { CVData } from '~/utils/schemas/cv-schema';
+import ThemeSwitcher from '~/components/ui/theme-switcher.astro';
+import SocialShare from '~/components/ui/social-share.astro';
+import ExportButton from '~/components/ui/export-button.astro';
 
 interface Props {
   title: string;
@@ -115,7 +115,7 @@ const structuredData = cvData
     </main>
 
     <script>
-      import { themeManager } from '@/utils/theme-manager';
+      import { themeManager } from '~/utils/theme-manager';
 
       document.addEventListener('DOMContentLoaded', () => {
         themeManager.init();

@@ -1,12 +1,12 @@
 ---
-import ResumeLayout from '@/layouts/resume-layout.astro';
-import Header from '@/components/sections/header.astro';
-import About from '@/components/sections/about.astro';
-import WorkExperience from '@/components/sections/work-experience.astro';
-import Skills from '@/components/sections/skills.astro';
-import Education from '@/components/sections/education.astro';
-import Contact from '@/components/sections/contact.astro';
-import { cvData as ProfileData } from '@/data/sudeep-cv.ts';
+import ResumeLayout from '~/layouts/resume-layout.astro';
+import Header from '~/components/sections/header.astro';
+import About from '~/components/sections/about.astro';
+import WorkExperience from '~/components/sections/work-experience.astro';
+import Skills from '~/components/sections/skills.astro';
+import Education from '~/components/sections/education.astro';
+import Contact from '~/components/sections/contact.astro';
+import { cvData as ProfileData } from '~/data/sudeep-cv';
 
 const { basics, about, work, education, skills } = ProfileData;
 
