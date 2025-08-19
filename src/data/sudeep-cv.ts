@@ -49,10 +49,43 @@ export const cvData: CVData = {
   },
   about: {
     summary:
-      'Highly accomplished Senior Software Engineer with 7 years of experience specializing in full-stack web development, machine learning, and product building. Proven ability to architect scalable solutions, lead complex migrations, and drive product innovation, consistently delivering high-impact results in fast-paced environments.',
+      'Highly accomplished Lead Software Engineer with 9+ years of experience specializing in full-stack web development, machine learning, and product building. Proven ability to architect scalable solutions, lead complex migrations, and drive product innovation, consistently delivering high-impact results in fast-paced environments.',
   },
   media: [],
   work: [
+    {
+      name: 'Equal Experts',
+      position: 'Lead Software Engineer',
+      type: 'Full-time',
+      url: null,
+      start_date: '2022-09-01',
+      end_date: null,
+      summary:
+        'AI-Enabled Engineering Specialist at the forefront of modern software development, specializing in leveraging cutting-edge AI tools to streamline development workflows, accelerate problem-solving, and build high-impact solutions.',
+      highlights: [
+        'At the forefront of modern software development, specializing in leveraging cutting-edge AI tools like Cursor, Windsurf, Claude Code, and Roo Code to streamline development workflows and accelerate problem-solving.',
+        'Blend traditional engineering skills with advanced AI-assisted development — including reverse engineering legacy systems, rapid prototyping, debugging complex architectures, and shipping robust features with efficiency.',
+        'Use GenAI tools not just as assistants, but as collaborative problem-solvers that help decode, understand, and rebuild systems faster and smarter.',
+        'Reverse-engineered an entire legacy application in just 6 days using AI-assisted workflows — a process that would have traditionally taken an estimated 4 months.',
+      ],
+      city: 'Bengaluru',
+      state: null,
+      country: 'India',
+    },
+    {
+      name: 'Travelopia',
+      position: 'Lead Software Engineer (Contract)',
+      type: 'Contract',
+      url: null,
+      start_date: '2022-11-01',
+      end_date: null,
+      summary:
+        'Lead Software Engineer working on contract basis for travel technology solutions.',
+      highlights: [],
+      city: 'Bengaluru',
+      state: null,
+      country: 'India',
+    },
     {
       name: 'InVideo',
       position: 'Senior Software Engineer',
@@ -149,6 +182,24 @@ export const cvData: CVData = {
   publications: [],
   languages: [],
   certificates: [
+    {
+      name: 'Generative AI for Everyone',
+      date: null,
+      issuer: 'DeepLearning.AI',
+      url: null,
+    },
+    {
+      name: 'Google Prompting Essentials',
+      date: null,
+      issuer: 'Google',
+      url: null,
+    },
+    {
+      name: 'Programming with JavaScript',
+      date: null,
+      issuer: 'Coursera',
+      url: null,
+    },
     {
       name: 'TensorFlow in Practice Specialization',
       date: null,

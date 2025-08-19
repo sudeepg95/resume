@@ -12,12 +12,6 @@ interface Props {
 }
 
 const { work } = Astro.props;
-
-const sortedWork = [...work].sort((a, b) => {
-  const dateA = new Date(a.start_date);
-  const dateB = new Date(b.start_date);
-  return dateB.getTime() - dateA.getTime();
-});
 ---
 
 <section class="my-8">
@@ -29,9 +23,9 @@ const sortedWork = [...work].sort((a, b) => {
   </h2>
 
   {
-    sortedWork.length > 0 && (
+    work.length > 0 && (
       <div class="relative before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-gray-200 dark:before:bg-gray-600 md:before:hidden print:before:hidden">
-        {sortedWork.map((job) => {
+        {work.map((job) => {
           const dateRange = formatDateRange(job.start_date, job.end_date);
           const duration = calculateDuration(job.start_date, job.end_date);
           const location = formatLocation({

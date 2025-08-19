@@ -67,10 +67,16 @@ export const EducationSchema = z.object({
   country: z.string().optional(),
 });
 
+export const SkillItemSchema = z.object({
+  title: z.string(),
+  icon: z.string(),
+  url: z.string(),
+});
+
 export const SkillSchema = z.object({
-  name: z.string(),
-  level: z.string().optional(),
-  keywords: z.array(z.string()),
+  frameworks: z.array(SkillItemSchema),
+  programming: z.array(SkillItemSchema),
+  tools: z.array(SkillItemSchema),
 });
 
 export const CertificateSchema = z.object({
@@ -154,7 +160,7 @@ export const CVDataSchema = z.object({
   publications: z.array(PublicationSchema).optional(),
   languages: z.array(LanguageSchema).optional(),
   certificates: z.array(CertificateSchema).optional(),
-  skills: z.array(SkillSchema).optional(),
+  skills: SkillSchema.optional(),
   interests: z.array(InterestSchema).optional(),
   references: z.array(ReferenceSchema).optional(),
   projects: z.array(ProjectSchema).optional(),
@@ -167,6 +173,7 @@ export type Basics = z.infer<typeof BasicsSchema>;
 export type About = z.infer<typeof AboutSchema>;
 export type WorkExperience = z.infer<typeof WorkExperienceSchema>;
 export type Education = z.infer<typeof EducationSchema>;
+export type SkillItem = z.infer<typeof SkillItemSchema>;
 export type Skill = z.infer<typeof SkillSchema>;
 export type Certificate = z.infer<typeof CertificateSchema>;
 export type Project = z.infer<typeof ProjectSchema>;

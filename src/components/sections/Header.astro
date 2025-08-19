@@ -104,8 +104,7 @@ const processedProfiles =
           <div class="flex items-center gap-2 text-base">
             <Icon name="fa-solid:map-marker-alt" class="w-5 h-5 opacity-80" />
             <span>
-              {location.city}
-              {location.region && `, ${location.region}`}
+              {location.city}{location.country_code && `, ${location.country_code}`}
             </span>
           </div>
         )

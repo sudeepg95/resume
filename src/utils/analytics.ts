@@ -176,12 +176,6 @@ class AnalyticsManager {
     return 'other';
   }
 
-  private getCurrentTheme(): string {
-    return (
-      document.documentElement.getAttribute('data-theme') || 'professional'
-    );
-  }
-
   private getRating(metric: string, value: number): string {
     const thresholds = {
       lcp: { good: 2500, needs_improvement: 4000 },
