@@ -4,25 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import icon from 'astro-icon';
 
 export default defineConfig({
-  site: 'https://sudeepg95.github.io/resume',
-  output: 'static',
+  site: 'https://sudeepg95.github.io',
+  base: '/resume',
   integrations: [tailwind(), sitemap(), icon()],
-  build: {
-    assets: 'assets',
-    inlineStylesheets: 'auto',
-    minify: true,
-  },
-  vite: {
-    build: {
-      minify: 'esbuild',
-      cssMinify: true,
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            vendor: ['zod'],
-          },
-        },
-      },
-    },
-  },
 });

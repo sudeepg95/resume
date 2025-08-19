@@ -1,13 +1,12 @@
 {
   "name": "sudeep-resume",
-  "type": "module",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check",
+    "astro": "astro",
     "lint": "eslint . --ext .js,.ts,.astro",
     "lint:fix": "eslint . --ext .js,.ts,.astro --fix",
     "format": "prettier --write .",
@@ -16,31 +15,33 @@
     "build:analyze": "astro build --analyze",
     "build:production": "npm run check && npm run build && npm run compress",
     "optimize": "npm run build && npm run compress",
-    "compress": "npx imagemin 'dist/**/*.{jpg,png,svg}' --out-dir=dist"
+    "compress": "npx imagemin 'dist/**/*.{jpg,png,svg}' --out-dir=dist",
+    "clean": "rimraf dist node_modules"
   },
-  "dependencies": {
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
     "@astrojs/sitemap": "^3.5.0",
     "@astrojs/tailwind": "^6.0.2",
-    "@iconify-json/fa-brands": "^1.2.2",
-    "@iconify-json/fa-solid": "^1.2.2",
-    "@iconify-json/mdi": "^1.2.3",
-    "@iconify-json/simple-icons": "^1.2.48",
+    "@types/node": "^24.3.0",
+    "@typescript-eslint/eslint-plugin": "^8.39.1",
+    "@typescript-eslint/parser": "^8.39.1",
     "astro": "^5.13.2",
     "astro-eslint-parser": "^1.2.2",
     "astro-icon": "^1.1.5",
     "gray-matter": "^4.0.3",
     "prettier-plugin-astro": "^0.14.1",
     "web-vitals": "^5.1.0",
-    "zod": "^3.25.76"
-  },
-  "devDependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@types/node": "^24.3.0",
-    "@typescript-eslint/eslint-plugin": "^8.39.1",
-    "@typescript-eslint/parser": "^8.39.1",
+    "zod": "^3.25.76",
     "eslint": "^9.33.0",
     "globals": "^16.3.0",
     "prettier": "^3.6.2",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "rimraf": "^6.0.1"
+  },
+  "dependencies": {
+    "@iconify-json/fa-brands": "^1.2.2",
+    "@iconify-json/fa-solid": "^1.2.2",
+    "@iconify-json/mdi": "^1.2.3",
+    "@iconify-json/simple-icons": "^1.2.48"
   }
 }
