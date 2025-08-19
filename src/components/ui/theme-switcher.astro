@@ -1,5 +1,5 @@
 ---
-import { THEME_CONFIGS } from '../../utils/theme-manager';
+import { THEME_CONFIGS } from '@/utils/theme-manager';
 import { Icon } from 'astro-icon/components';
 
 const themes = Object.entries(THEME_CONFIGS);
@@ -66,7 +66,7 @@ const themes = Object.entries(THEME_CONFIGS);
 </div>
 
 <script>
-  import { themeManager } from '../../utils/theme-manager';
+  import { themeManager } from '@/utils/theme-manager';
 
   class ThemeSwitcherComponent {
     private toggle: HTMLElement | null = null;

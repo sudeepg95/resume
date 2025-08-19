@@ -10,12 +10,14 @@
       "@/styles/*": ["src/styles/*"],
       "@/data/*": ["src/data/*"]
     },
-    "allowJs": true,
-    "checkJs": false,
     "strict": true,
     "noEmit": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "isolatedModules": true,
     "typeRoots": ["./node_modules/@types", "./src/types"]
   },
   "include": ["src/**/*", ".astro/**/*"]

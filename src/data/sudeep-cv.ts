@@ -1,4 +1,4 @@
-import type { CVData } from '../utils/schemas/cv-schema';
+import type { CVData } from '@/utils/schemas/cv-schema';
 
 export const resumeLink =
   'https://drive.google.com/file/d/1ez2cOn9VhzDl45XweK6E0kcsXiX-7aSQ/view?usp=sharing';
