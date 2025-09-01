@@ -15,13 +15,14 @@ const { work } = Astro.props;
 ---
 
 <section class="py-12 slide-in-from-right" data-animate>
-  <div class="flex items-center gap-x-3 mb-6">
+  <div class="flex items-center gap-x-3 mb-12">
     <Icon name="mdi:briefcase-outline" class="w-8 h-8 text-blue-500" />
     <h2 class="text-3xl font-bold">Work Experience</h2>
   </div>
 
-  <div class="space-y-8">
-    {work.map((job) => {
+  <div class="relative timeline-container">
+    <div class="timeline-line"></div>
+    {work.map((job, index) => {
       const dateRange = formatDateRange(job.start_date, job.end_date);
       const duration = calculateDuration(job.start_date, job.end_date);
       const location = formatLocation({
@@ -29,45 +30,170 @@ const { work } = Astro.props;
         region: job.state,
         country: job.country,
       });
+      const sideClass = index % 2 === 0 ? 'timeline-left' : 'timeline-right';
 
       return (
-        <article class="p-6 bg-charcoal-100 dark:bg-charcoal-700 rounded-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-          <header class="mb-4">
-            <div class="flex justify-between items-start">
-              <div>
-                <h3 class="text-xl font-bold text-charcoal-800 dark:text-charcoal-100">{job.position}</h3>
-                <p class="text-md text-charcoal-600 dark:text-charcoal-300">
-                  {job.url ? (
-                    <a href={sanitizeUrl(job.url)} target="_blank" rel="noopener noreferrer" class="hover:underline">
-                      {job.name}
-                    </a>
-                  ) : (
-                    job.name
-                  )}
-                  {job.type && <span class="text-sm italic"> ({job.type})</span>}
-                </p>
+        <div class={`timeline-item ${sideClass}`}>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content bg-charcoal-100 dark:bg-charcoal-700 rounded-lg p-6 shadow-md">
+            <header class="cursor-pointer timeline-header">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="text-xl font-bold text-charcoal-800 dark:text-charcoal-100">{job.position}</h3>
+                  <p class="text-md text-charcoal-600 dark:text-charcoal-300">
+                    {job.url ? (
+                      <a href={sanitizeUrl(job.url)} target="_blank" rel="noopener noreferrer" class="hover:underline">
+                        {job.name}
+                      </a>
+                    ) : (
+                      job.name
+                    )}
+                    {job.type && <span class="text-sm italic"> ({job.type})</span>}
+                  </p>
+                </div>
+                <div class="text-right text-sm text-charcoal-500 dark:text-charcoal-400">
+                  <p>{dateRange}</p>
+                  <p>({duration})</p>
+                  {location && <p class="mt-1">{location}</p>}
+                </div>
               </div>
-              <div class="text-right text-sm text-charcoal-500 dark:text-charcoal-400">
-                <p>{dateRange}</p>
-                <p>({duration})</p>
-                {location && <p class="mt-1">{location}</p>}
-              </div>
+            </header>
+            <div class="timeline-details hidden mt-4">
+              {job.summary && (
+                <p class="italic text-charcoal-600 dark:text-charcoal-300 mb-4">{job.summary}</p>
+              )}
+              {job.highlights && job.highlights.length > 0 && (
+                <ul class="list-disc list-inside space-y-2">
+                  {job.highlights.map((highlight) => (
+                    <li class="text-charcoal-700 dark:text-charcoal-200">{highlight}</li>
+                  ))}
+                </ul>
+              )}
             </div>
-          </header>
-
-          {job.summary && (
-            <p class="italic text-charcoal-600 dark:text-charcoal-300 mb-4">{job.summary}</p>
-          )}
-
-          {job.highlights && job.highlights.length > 0 && (
-            <ul class="list-disc list-inside space-y-2">
-              {job.highlights.map((highlight) => (
-                <li class="text-charcoal-700 dark:text-charcoal-200">{highlight}</li>
-              ))}
-            </ul>
-          )}
-        </article>
+          </div>
+        </div>
       );
     })}
   </div>
 </section>
+
+<style>
+  .timeline-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: #e2e8f0; /* charcoal-200 */
+    transform: translateX(-50%);
+  }
+  .dark .timeline-line {
+    background-color: #334155; /* charcoal-700 */
+  }
+  .timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 0 40px;
+    margin-bottom: 40px;
+  }
+  .timeline-item:last-child {
+    margin-bottom: 0;
+  }
+  .timeline-left {
+    left: 0;
+    padding-right: 60px;
+  }
+  .timeline-right {
+    left: 50%;
+    padding-left: 60px;
+  }
+  .timeline-dot {
+    position: absolute;
+    top: 20px;
+    width: 20px;
+    height: 20px;
+    background-color: #3b82f6; /* blue-500 */
+    border: 4px solid #f1f5f9; /* charcoal-100 */
+    border-radius: 50%;
+    z-index: 10;
+  }
+  .dark .timeline-dot {
+    border-color: #1e293b; /* charcoal-800 */
+  }
+  .timeline-left .timeline-dot {
+    right: -10px;
+  }
+  .timeline-right .timeline-dot {
+    left: -10px;
+  }
+  .timeline-content {
+    position: relative;
+  }
+  .timeline-left .timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: -15px;
+    border-width: 15px;
+    border-style: solid;
+    border-color: transparent transparent transparent #f1f5f9; /* charcoal-100 */
+  }
+  .dark .timeline-left .timeline-content::before {
+    border-color: transparent transparent transparent #334155; /* charcoal-700 */
+  }
+  .timeline-right .timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: -15px;
+    border-width: 15px;
+    border-style: solid;
+    border-color: transparent #f1f5f9 transparent transparent; /* charcoal-100 */
+  }
+  .dark .timeline-right .timeline-content::before {
+    border-color: transparent #334155 transparent transparent; /* charcoal-700 */
+  }
+
+  @media (max-width: 768px) {
+    .timeline-line {
+      left: 10px;
+    }
+    .timeline-item {
+      width: 100%;
+      padding-left: 50px;
+      padding-right: 20px;
+    }
+    .timeline-left, .timeline-right {
+      left: 0;
+    }
+    .timeline-left .timeline-dot, .timeline-right .timeline-dot {
+      left: 0px;
+    }
+    .timeline-left .timeline-content::before, .timeline-right .timeline-content::before {
+      left: -15px;
+      border-color: transparent #f1f5f9 transparent transparent;
+    }
+    .dark .timeline-left .timeline-content::before, .dark .timeline-right .timeline-content::before {
+      border-color: transparent #334155 transparent transparent;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const headers = document.querySelectorAll('.timeline-header');
+    headers.forEach(header => {
+      header.addEventListener('click', () => {
+        const details = header.nextElementSibling;
+        if (details) {
+          details.classList.toggle('hidden');
+        }
+      });
+    });
+  });
+</script>

@@ -4,7 +4,7 @@ import { fontFamily } from 'tailwindcss/defaultTheme';
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-  darkMode: ['class', '[data-mode="dark"]'],
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
@@ -77,16 +77,6 @@ export default {
       },
       minHeight: {
         letter: '11in',
-      },
-      backgroundImage: {
-        'pattern-professional': `linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)`,
-        'pattern-modern': `linear-gradient(135deg, #059669 0%, #34d399 100%), 
-                          radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
-                          radial-gradient(circle at 80% 20%, rgba(34, 197, 94, 0.1) 0%, transparent 50%)`,
-        'pattern-creative': `linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%),
-                            conic-gradient(from 0deg at 50% 50%, rgba(124, 58, 237, 0.1) 0deg, transparent 60deg, rgba(167, 139, 250, 0.1) 120deg, transparent 180deg)`,
-        'pattern-minimal': `linear-gradient(135deg, #374151 0%, #6b7280 100%),
-                           linear-gradient(45deg, transparent 40%, rgba(107, 114, 128, 0.05) 50%, transparent 60%)`,
       },
     },
   },

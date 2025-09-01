@@ -8,9 +8,7 @@ const socialLinks = basics.profiles.filter(profile =>
 );
 ---
 
-<section class="relative py-20 md:py-32 bg-gradient-to-b from-blue-50 dark:from-charcoal-800 to-transparent overflow-hidden">
-  <div id="particles-js" class="absolute inset-0 z-0"></div>
-
+<section class="relative py-20 md:py-32">
   <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
     <div class="text-center md:text-left">
       <h1 class="text-4xl md:text-6xl font-bold text-charcoal-900 dark:text-white tracking-tight leading-tight">
@@ -35,12 +33,6 @@ const socialLinks = basics.profiles.filter(profile =>
             <Icon name={`mdi:${link.network.toLowerCase()}`} class="w-7 h-7" />
           </a>
         ))}
-      </div>
-    </div>
-    <div class="hidden md:block text-center">
-      <!-- Placeholder for image or animation -->
-      <div class="w-80 h-80 bg-charcoal-200/50 dark:bg-charcoal-700/50 backdrop-blur-sm rounded-full mx-auto flex items-center justify-center">
-        <Icon name="mdi:code-braces" class="w-40 h-40 text-blue-500" />
       </div>
     </div>
   </div>

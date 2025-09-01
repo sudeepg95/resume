@@ -1,9 +1,6 @@
 ---
 import type { CVData } from '~/utils/schemas/cv-schema';
-import SocialShare from '~/components/ui/social-share.astro';
-import ExportButton from '~/components/ui/export-button.astro';
 import DarkModeToggle from '~/components/ui/dark-mode-toggle.astro';
-import Preloader from '~/components/ui/preloader.astro';
 
 interface Props {
   title: string;
@@ -91,6 +88,12 @@ const structuredData = cvData
 
     <style>
       @import '/src/styles/globals.css';
+      #particles-js {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+      }
     </style>
     <script is:inline>
       // On page load or when changing themes, best to add inline in `head` to avoid FOUC
@@ -105,33 +108,25 @@ const structuredData = cvData
       }
     </script>
   </head>
-  <body class="bg-charcoal-50 dark:bg-charcoal-900">
-    <Preloader />
+  <body class="bg-charcoal-100 dark:bg-charcoal-900">
+    <div id="particles-js" class="absolute inset-0 z-0"></div>
     <header class="fixed top-0 right-0 p-4 z-50">
       <DarkModeToggle />
     </header>
-    <ExportButton />
-
-    <SocialShare
-      title={title}
-      url={Astro.url.toString()}
-      description={description}
-    />
-
     <main
-      class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12"
+      class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12"
     >
-      <div class="bg-white dark:bg-charcoal-800 shadow-xl rounded-2xl p-8">
+      <div class="bg-white/70 dark:bg-charcoal-800/70 backdrop-blur-md shadow-xl rounded-2xl p-8">
         <slot />
       </div>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
       import { initializeScrollAnimations } from '~/utils/scroll-animations';
+      import '~/utils/particles-setup.js';
 
       initializeScrollAnimations();
     </script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="/src/utils/particles-setup.js"></script>
   </body>
 </html>
