@@ -1,40 +1,59 @@
 ---
 import { Icon } from 'astro-icon/components';
+import { cvData } from '~/data/sudeep-cv';
 
-const socialLinks = [
-  { name: 'GitHub', url: 'https://github.com/sudeepg95', icon: 'mdi:github' },
-  { name: 'LinkedIn', url: 'https://linkedin.com/in/sudeepg95', icon: 'mdi:linkedin' },
-  { name: 'Twitter', url: 'https://twitter.com/sudeepg95', icon: 'mdi:twitter' },
-];
+const { basics } = cvData;
+const socialLinks = basics.profiles.filter(profile =>
+  ['GitHub', 'LinkedIn', 'Twitter'].includes(profile.network)
+);
 ---
 
-<section class="relative h-screen flex items-center justify-center text-center bg-gray-900 text-white overflow-hidden">
-  <div class="absolute inset-0 bg-black opacity-50"></div>
-  <div class="relative z-10 p-8">
-    <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-4 text-shadow-header">Sudeep G</h1>
-    <p class="text-xl md:text-2xl text-gray-300 mb-8">Lead Software Engineer | Full-Stack Developer</p>
-    <div class="flex justify-center space-x-4">
-      <a href="#about" class="btn btn-primary">About Me</a>
-      <a href="#contact" class="btn btn-secondary">Contact</a>
-    </div>
-    <div class="flex justify-center space-x-6 mt-8">
-      {socialLinks.map(link => (
-        <a href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.name} class="text-gray-400 hover:text-white transition-colors duration-300">
-          <Icon name={link.icon} class="w-8 h-8" />
+<section class="relative py-20 md:py-32 bg-gradient-to-b from-blue-50 dark:from-charcoal-800 to-transparent overflow-hidden">
+  <div id="particles-js" class="absolute inset-0 z-0"></div>
+
+  <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
+    <div class="text-center md:text-left">
+      <h1 class="text-4xl md:text-6xl font-bold text-charcoal-900 dark:text-white tracking-tight leading-tight">
+        {basics.name}
+      </h1>
+      <p class="mt-4 text-lg md:text-xl text-charcoal-600 dark:text-charcoal-300">
+        {basics.label}
+      </p>
+      <div class="mt-8 flex justify-center md:justify-start gap-4">
+        <a href="#about" class="btn btn-primary">
+          <Icon name="mdi:arrow-down-circle-outline" class="w-5 h-5 mr-2" />
+          Learn More
         </a>
-      ))}
+        <a href="#contact" class="btn btn-secondary">
+          <Icon name="mdi:email-outline" class="w-5 h-5 mr-2" />
+          Contact Me
+        </a>
+      </div>
+      <div class="mt-8 flex justify-center md:justify-start gap-6">
+        {socialLinks.map(link => (
+          <a href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.network} class="text-charcoal-500 dark:text-charcoal-400 hover:text-blue-500 dark:hover:text-blue-400 transition-all duration-300 transform hover:scale-110">
+            <Icon name={`mdi:${link.network.toLowerCase()}`} class="w-7 h-7" />
+          </a>
+        ))}
+      </div>
+    </div>
+    <div class="hidden md:block text-center">
+      <!-- Placeholder for image or animation -->
+      <div class="w-80 h-80 bg-charcoal-200/50 dark:bg-charcoal-700/50 backdrop-blur-sm rounded-full mx-auto flex items-center justify-center">
+        <Icon name="mdi:code-braces" class="w-40 h-40 text-blue-500" />
+      </div>
     </div>
   </div>
 </section>
 
 <style>
   .btn {
-    @apply inline-block px-8 py-3 rounded-full text-lg font-semibold transition-transform duration-300 transform hover:scale-105;
+    @apply inline-flex items-center px-6 py-3 rounded-full text-base font-semibold transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 hover:shadow-xl;
   }
   .btn-primary {
-    @apply bg-blue-600 hover:bg-blue-700 text-white;
+    @apply bg-blue-600 hover:bg-blue-700 text-white shadow-lg;
   }
   .btn-secondary {
-    @apply bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 text-white;
+    @apply bg-white dark:bg-charcoal-700 text-charcoal-700 dark:text-charcoal-200 hover:bg-charcoal-100 dark:hover:bg-charcoal-600 shadow-lg;
   }
 </style>

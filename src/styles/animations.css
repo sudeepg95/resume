@@ -1,0 +1,25 @@
+/* Initial state for elements to be animated */
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.8s ease-out;
+}
+
+.slide-in-from-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.slide-in-from-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Active state for elements when they become visible */
+.fade-in.is-visible,
+.slide-in-from-left.is-visible,
+.slide-in-from-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
