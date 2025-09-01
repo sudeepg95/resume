@@ -1,6 +1,6 @@
 ---
 import ResumeLayout from '~/layouts/resume-layout.astro';
-import Header from '~/components/sections/header.astro';
+import Hero from '~/components/sections/hero.astro';
 import About from '~/components/sections/about.astro';
 import WorkExperience from '~/components/sections/work-experience.astro';
 import Skills from '~/components/sections/skills.astro';
@@ -19,7 +19,7 @@ const pageDescription = about.summary.substring(0, 160) + '...';
   description={pageDescription}
   theme="professional"
 >
-  <Header basics={basics} />
+  <Hero />
   <About about={about} />
 
   {work && work.length > 0 && <WorkExperience work={work} />}
