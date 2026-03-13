@@ -69,8 +69,7 @@ export const EducationSchema = z.object({
 
 export const SkillSchema = z.object({
   name: z.string(),
-  level: z.string().optional(),
-  keywords: z.array(z.string()),
+  level: z.number().min(0).max(100),
 });
 
 export const CertificateSchema = z.object({

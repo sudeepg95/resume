@@ -17,77 +17,51 @@ const sortedEducation = [...education].sort((a, b) => {
 });
 ---
 
-<section class="my-8">
-  <h2
-    class="flex items-center gap-3 text-2xl font-semibold text-primary mb-8 pb-3 border-b-2 border-primary dark:text-accent dark:border-accent"
-  >
-    <Icon name="fa-solid:graduation-cap" class="w-6 h-6" />
-    Education
-  </h2>
+<section class="py-12 slide-in-from-right" data-animate>
+  <div class="flex items-center gap-x-3 mb-6">
+    <Icon name="mdi:school-outline" class="w-8 h-8 text-blue-500" />
+    <h2 class="text-3xl font-bold">Education</h2>
+  </div>
 
-  {
-    sortedEducation.length > 0 && (
-      <div class="flex flex-col gap-8">
-        {sortedEducation.map((edu) => {
-          const dateRange = formatDateRange(edu.start_date, edu.end_date);
-          const location = formatLocation({
-            city: edu.city || '',
-            region: edu.state,
-            country: edu.country,
-          });
+  <div class="space-y-8">
+    {sortedEducation.map((edu) => {
+      const dateRange = formatDateRange(edu.start_date, edu.end_date);
+      const location = formatLocation({
+        city: edu.city || '',
+        region: edu.state,
+        country: edu.country,
+      });
 
-          return (
-            <article class="p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg transition-all duration-200 hover:shadow-md hover:border-blue-600 hover:-translate-y-1 print:break-inside-avoid print:border-none print:border-b print:border-gray-200 print:rounded-none print:px-0 print:py-4 print:shadow-none print:hover:border-gray-200 print:hover:translate-y-0 animate-in fade-in-50 slide-in-from-right-8 duration-600">
-              <div class="flex justify-between items-start mb-4 gap-4 md:items-start">
-                <div class="flex-1">
-                  <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
-                    {edu.study_type} in {edu.area}
-                  </h3>
-                  <div class="mb-1">
-                    {edu.url ? (
-                      <a
-                        href={sanitizeUrl(edu.url)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-blue-600 dark:text-blue-400 no-underline font-medium text-lg hover:underline transition-colors duration-150"
-                      >
-                        {edu.institution}
-                      </a>
-                    ) : (
-                      <span class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                        {edu.institution}
-                      </span>
-                    )}
-                  </div>
-                </div>
+      return (
+        <article class="p-6 bg-charcoal-100 dark:bg-charcoal-700 rounded-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+          <header class="flex justify-between items-start">
+            <div>
+              <h3 class="text-xl font-bold text-charcoal-800 dark:text-charcoal-100">{edu.study_type} in {edu.area}</h3>
+              <p class="text-md text-charcoal-600 dark:text-charcoal-300">
+                {edu.url ? (
+                  <a href={sanitizeUrl(edu.url)} target="_blank" rel="noopener noreferrer" class="hover:underline">
+                    {edu.institution}
+                  </a>
+                ) : (
+                  edu.institution
+                )}
+              </p>
+            </div>
+            <div class="text-right text-sm text-charcoal-500 dark:text-charcoal-400">
+              <p>{dateRange}</p>
+              {location && <p class="mt-1">{location}</p>}
+              {edu.score && <p class="mt-1 font-semibold text-blue-500">{edu.score}</p>}
+            </div>
+          </header>
 
-                <div class="text-right text-sm text-gray-600 dark:text-gray-400 flex-shrink-0 md:text-left">
-                  <div class="mb-2">
-                    <span class="font-medium text-gray-900 dark:text-gray-100">
-                      {dateRange}
-                    </span>
-                  </div>
-                  {location && <div class="mb-1 text-xs">{location}</div>}
-                  {edu.score && (
-                    <div class="text-xs font-medium text-blue-600 dark:text-blue-400">
-                      {edu.score}
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {edu.courses && edu.courses.length > 0 && (
-                <div class="leading-normal">
-                  <p class="mb-0 text-text">
-                    <strong>Relevant Coursework:</strong>{' '}
-                    {edu.courses.join(', ')}
-                  </p>
-                </div>
-              )}
-            </article>
-          );
-        })}
-      </div>
-    )
-  }
+          {edu.courses && edu.courses.length > 0 && (
+            <div class="mt-4">
+              <h4 class="font-semibold text-charcoal-700 dark:text-charcoal-200 mb-2">Relevant Coursework:</h4>
+              <p class="text-charcoal-600 dark:text-charcoal-300">{edu.courses.join(', ')}</p>
+            </div>
+          )}
+        </article>
+      );
+    })}
+  </div>
 </section>
