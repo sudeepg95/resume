@@ -88,6 +88,7 @@ export const ProjectSchema = z.object({
   start_date: z.string().optional(),
   end_date: z.string().optional(),
   url: z.string().nullable().optional(),
+  visible: z.boolean().optional(),
 });
 
 export const AwardSchema = z.object({

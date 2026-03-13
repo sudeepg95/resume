@@ -258,7 +258,144 @@ export const cvData: CVData = {
   ],
   interests: [],
   references: [],
-  projects: [],
+  projects: [
+    {
+      name: 'Next-gen Video Editing Platform',
+      description:
+        'Building the next-gen Video editing platform for the Web. Bleeding edge feature sets including WASM, WebCodecs, and FFmpeg with 4K media handling capabilities are some of the things explored for the generational iteration of the InVideo product. Rewriting and migrating modules within the product to improve the experience for our existing solution.',
+      highlights: ['InVideo'],
+      keywords: ['React', 'Angular', 'Python'],
+      visible: true,
+    },
+    {
+      name: 'IDFC Capital First Bank',
+      description:
+        'Helped build entire journeys and features for iOS, Android, and Web. The project included industry-first features like Cloud-based hyper-personalization, Server-side toggle-based journey enabling, Trunk-based Development methodologies, etc.',
+      highlights: ['ThoughtWorks'],
+      keywords: ['React', 'React Native', 'Golang'],
+      visible: true,
+    },
+    {
+      name: 'Caterpillar',
+      description:
+        'A dealer/customer-facing PWA which provides essential fleet management capabilities through a premium user experience. Key capabilities included: Asset Tracking (Full fleet view and Asset Management), Geo-fencing, Maximize Uptime, Utilization Optimization, and Financial Management.',
+      highlights: ['ThoughtWorks'],
+      keywords: ['Angular', 'Jest', 'Galen', 'Testcafe'],
+      visible: true,
+    },
+    {
+      name: 'Talent500',
+      description:
+        'Built an Application Tracking System application called Canvas that allows multi-channel sourcing, from the proprietary talent pool to third-party job boards and passive sources like LinkedIn.',
+      highlights: ['CoffeeBeans Consulting'],
+      keywords: ['React', 'Golang'],
+      visible: true,
+    },
+    {
+      name: 'Syncari',
+      description:
+        'A highly customizable automated Data Management-Unification platform that would work on data from various sources like Salesforce, Zendesk, Hubspot, etc., and performs aggregations based on meta-data.',
+      highlights: ['CoffeeBeans Consulting'],
+      keywords: ['React', 'Java'],
+      visible: true,
+    },
+    {
+      name: 'Rocket Partners',
+      description:
+        'Developed a mobile - kiosk application pair to be used across a retail supermarket chain. The apps were implemented to provide the experience of the Progressive Web to the end-users. In addition, we also developed different micro-services that bridge external vendors to the system.',
+      highlights: ['QBurst Technologies Pvt Ltd.'],
+      keywords: ['React', 'NodeJS', 'NestJS', 'HTML', 'SCSS'],
+      visible: true,
+    },
+    {
+      name: 'Mile Auto',
+      description:
+        'An online pay-per-mile auto insurance application intended for low-mileage drivers. A portal was developed with a specific focus on Porsche brand vehicles in connection with Mile Auto where a user could perform a Quote-To-Bind process from within the application.',
+      highlights: ['QBurst Technologies Pvt Ltd.'],
+      keywords: ['Vue.js', 'JavaScript ES6', 'HTML', 'SCSS'],
+      visible: true,
+    },
+    {
+      name: 'Savi IoTA',
+      description:
+        'Savi is an application that confidently predicts the location, condition and ETA of a cargo at any time in the future. Savi IoTA is the Internet of Things processing engine side of the Savi application. Data received from various types of sensors from cargo are ingested and logic is derived out of it which are then used for Analytics.',
+      highlights: ['QBurst Technologies Pvt Ltd.'],
+      keywords: ['Scala', 'Spark Streaming', 'Drools', 'Kafka'],
+      visible: true,
+    },
+    {
+      name: 'Anywhere Auctions',
+      description:
+        'Anywhere Auctions is a unique platform that brings together real estate agents, prospective buyers and individuals in the real estate domain, to view and participate in auctions, remotely, in real-time. The application also involves integration with docusign, fraud detection and various other modules.',
+      highlights: ['QBurst Technologies Pvt Ltd.'],
+      keywords: ['Angular', 'JavaScript ES6', 'HTML', 'LESS'],
+      visible: true,
+    },
+    {
+      name: 'StayNTouch & StayNTouch Automation',
+      description:
+        'A property management system that comprises of a Web App - Rover and a Mobile Application - Zest. Staff can manage the entire flow of a guest through the Rover application.',
+      highlights: ['QBurst Technologies Pvt Ltd.'],
+      keywords: ['AngularJS', 'React', 'Ruby', 'Selenium', 'Java'],
+      visible: true,
+    },
+    {
+      name: 'Metro Digital',
+      description:
+        'Helped build a portfolio website for the firm to showcase projects, and achievements and attract talent. It involved various third-party integrations for Application Tracking Systems, analytics, etc. Aimed for 95+ Lighthouse scores for the website to target minimal load times and to maximize Search Engine Optimization performance.',
+      highlights: ['ThoughtWorks'],
+      keywords: ['React', 'Gatsby'],
+      visible: false,
+    },
+    {
+      name: 'Pure Engage - Billing revamp',
+      description:
+        'Implemented a Hadoop based ETL pipeline to replace the legacy structure of a BPO service provider. Incoming data was Call Detail Records (CDRs), which were collected at periodic intervals, processed, billed, rated and the aggregated results served to Salesforce.',
+      highlights: ['QBurst Technologies Pvt Ltd.'],
+      keywords: ['Scala', 'Spark', 'Python', 'PostgreSQL'],
+      visible: false,
+    },
+    {
+      name: 'Air Springs Direct - Phase 2',
+      description:
+        'An online marketplace to search, select and purchase aftermarket air suspensions from Air Springs Direct. Improvements were made to the existing application using up-to-date design and technology standards.',
+      highlights: ['QBurst Technologies Pvt Ltd.'],
+      keywords: ['Angular', 'JavaScript ES6', 'HTML', 'LESS'],
+      visible: false,
+    },
+    {
+      name: 'Neo Trader',
+      description:
+        'Neo Online Trading is an online commodity trading platform which connects to major banks and exchanges thereby allowing investors & traders to place trades, monitor accounts as well as analyse and chart market performance.',
+      highlights: ['QBurst Technologies Pvt Ltd.'],
+      keywords: ['React', 'JavaScript ES6', 'HTML', 'LESS'],
+      visible: false,
+    },
+    {
+      name: 'Blockchain POC - Concentrix',
+      description:
+        'Created applications based on business use-cases that demonstrated the use cases of Identity management, Smart contract, Shared ledger, and Digital content storage, making use of Blockchain technology.',
+      highlights: ['QBurst Technologies Pvt Ltd.'],
+      keywords: ['Vue.js', 'JavaScript ES6', 'HTML', 'LESS'],
+      visible: false,
+    },
+    {
+      name: 'Facial Recognition in airport security surveillance system',
+      description:
+        'An automatic face recognition system for identifying a person from Surveillance videos and then obtaining his/her information by comparing against a facial database.',
+      highlights: ['Academic Main Project'],
+      keywords: ['Python', 'HTML', 'CSS3'],
+      visible: false,
+    },
+    {
+      name: 'Optimization of Integer Factorization algorithm using Modulo 20',
+      description:
+        'Modified Fermat Factorization Version 4 (MFFV4) was proposed in order to speed up the computation of the Integer Factorization problem. Its application is in the cryptanalysis of RSA based systems for analyzing the security level of the keys used.',
+      highlights: ['Academic Mini Project'],
+      keywords: ['Java'],
+      visible: false,
+    },
+  ],
   links: [],
   locations: [],
 };

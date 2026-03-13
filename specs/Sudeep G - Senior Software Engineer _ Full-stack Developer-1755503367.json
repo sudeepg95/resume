@@ -1,7 +1,7 @@
 {
   "basics": {
     "name": "Sudeep G",
-    "label": "Senior Software Engineer | Full-Stack Developer",
+    "label": "Lead Software Engineer | AI-Enabled Engineering Specialist",
     "image": null,
     "bg_image": null,
     "email": "sudeepg95@gmail.com",
@@ -43,22 +43,57 @@
     "actions": []
   },
   "about": {
-    "summary": "Highly accomplished Senior Software Engineer with 7 years of experience specializing in full-stack web development, machine learning, and product building. Proven ability to architect scalable solutions, lead complex migrations, and drive product innovation, consistently delivering high-impact results in fast-paced environments."
+    "summary": "Lead Software Engineer with 10 years of experience specializing in full-stack web development, AI-enabled engineering, and product building. Currently an AI-Enabled Engineering Specialist at Equal Experts, embedded at Travelopia, shipping production systems across international brands. Proven ability to architect scalable solutions, lead complex migrations, and leverage AI tools like Claude Code, Cursor, and MCP to compress months of work into days."
   },
   "media": [],
   "work": [
+    {
+      "name": "Equal Experts",
+      "position": "Lead Software Engineer",
+      "type": "Full-time",
+      "url": null,
+      "start_date": "2022-09-01",
+      "end_date": null,
+      "summary": "AI-Enabled Engineering Specialist embedded at Travelopia, one of the world's largest specialty travel groups. Leading front-end engineering across the Yachts (The Moorings & Sunsail) and Le Boat brands.",
+      "highlights": [
+        "Reverse-engineered an entire legacy application in 6 days using AI-assisted workflows (Claude Code, Cursor, Windsurf) — originally scoped at 4 months by conventional estimation.",
+        "Led Credit Card Surcharge for Yachts Checkout (Moorings & Sunsail) using PaymentJS with Fiserv — estimated to save 5-7M GBP annually. First brand within Travelopia live for both online and phone bookings simultaneously.",
+        "Replaced the legacy Drupal Checkout with a modern SPA for The Moorings and Sunsail brands, rolled out to all regions and currencies. CTO and Brand Technology Partner present for go-live.",
+        "Delivered the Le Boat New Online Checkout as a full SPA redesign across 8 international websites in ~6 weeks.",
+        "Launched Le Boat Manage My Booking — crew management, extras selection, and instalment payments, built with AI-assisted delivery throughout.",
+        "Built Le Boat Price Framing / Bundles (A/B tested, full rollout Dec 9). Ancillaries contribute 26% of Le Boat's overall business — Phase 1 showed strong mobile conversion uplift.",
+        "Building Voice IQ: AI-powered call coaching dashboard using Talkdesk + Google Gemini — transcription, LLM scoring, and coaching feedback for Sales/Support teams.",
+        "Won highest team praise at 2023 year-end demo. Won internal Hackathon — deployed solution to 90% of production users within 12 hours."
+      ],
+      "city": "Bengaluru",
+      "state": null,
+      "country": "India"
+    },
+    {
+      "name": "Travelopia",
+      "position": "Lead Software Engineer (Contract)",
+      "type": "Contract",
+      "url": null,
+      "start_date": "2022-11-01",
+      "end_date": null,
+      "summary": "Contracted via Equal Experts to Travelopia. Working across two major brands — Yachts (The Moorings & Sunsail) and Le Boat — leading the Apps Squad for front-end engineering, checkout modernization, payment systems, and AI-powered internal tooling.",
+      "highlights": [],
+      "city": "Bengaluru",
+      "state": null,
+      "country": "India"
+    },
     {
       "name": "InVideo",
       "position": "Senior Software Engineer",
       "type": null,
       "url": null,
       "start_date": "2021-11-01",
-      "end_date": "2024-03-28",
-      "summary": "Led UI architectural initiatives and drove significant code migrations to enhance a next-gen video editing platform.",
+      "end_date": "2022-09-01",
+      "summary": "Led UI architecture for a next-gen video editing platform handling 4K media with bleeding-edge web technologies (WASM, WebCodecs, FFmpeg).",
       "highlights": [
-        "Architected and implemented critical UI architectural decisions, optimizing front-end performance and scalability for a next-gen video editing platform.",
-        "Directed and executed large-scale code migration from Angular to React for entire modules utilizing Module Federation, significantly improving system efficiency and maintainability.",
-        "Provided 24/7 on-call support and directly engaged with users to identify and resolve critical bugs in production environments, ensuring high system availability and user satisfaction."
+        "Architected and executed a large-scale code migration from Angular to React using Module Federation — improving build performance, team autonomy, and long-term maintainability across the platform.",
+        "Made critical UI architectural decisions impacting the front-end of a product used by millions of creators worldwide.",
+        "Provided on-call support and directly engaged with users to triage and resolve production issues, ensuring high availability for a real-time editing experience."
       ],
       "city": "Remote",
       "state": null,
@@ -71,12 +106,11 @@
       "url": null,
       "start_date": "2020-08-01",
       "end_date": "2021-11-01",
-      "summary": "Delivered comprehensive web and mobile modules, focusing on high-performance and user experience for diverse client projects.",
+      "summary": "Delivered across 3 client engagements, working in React, Angular, React Native, and Gatsby.",
       "highlights": [
-        "Developed scalable web modules using React and Angular, enhancing user experience and functionality for key client applications.",
-        "Engineered cross-platform React components for seamless integration across iOS, Android, and web applications, broadening accessibility.",
-        "Built robust Angular modules for Progressive Web Applications (PWAs), improving offline capabilities and user engagement.",
-        "Constructed high-performance static websites from scratch using Gatsby, achieving minimal load times and optimizing SEO performance."
+        "IDFC First Bank (Retail Lending): Built complete user journeys for iOS, Android, and Web using React Native. Industry-first capabilities including cloud-based hyper-personalization and server-side toggle-based journey enabling, with trunk-based development.",
+        "Caterpillar (Fleet Management): Developed features for a dealer/customer-facing PWA with deep Google Maps integration — asset tracking, geo-fencing, utilization optimization, and fleet-wide financial management. Owned architectural decisions and code reviews.",
+        "Metro Digital: Built a performance-focused portfolio website from scratch using Gatsby. Achieved 95+ Lighthouse scores across all categories. Integrated ATS and analytics tracking."
       ],
       "city": "Remote",
       "state": null,
@@ -89,12 +123,12 @@
       "url": null,
       "start_date": "2020-01-01",
       "end_date": "2021-11-01",
-      "summary": "Contributed to full-stack development and performance optimization of web applications, enhancing user engagement and brand visibility.",
+      "summary": "Full-stack engineer across 4+ client projects in a consulting environment.",
       "highlights": [
-        "Resolved complex web-related challenges, improving system stability and user experience across multiple platforms.",
-        "Implemented new features and performance enhancements for React-based systems, increasing application responsiveness and user satisfaction.",
-        "Executed comprehensive performance analysis and optimizations for web applications, leading to measurable improvements in load speed and efficiency.",
-        "Developed internal tools and applications designed to boost engagement and brand awareness, fostering positive reinforcement across the organization."
+        "Talent500: Built features for Canvas, a next-gen Applicant Tracking System enabling multi-channel sourcing from proprietary talent pools to third-party job boards and LinkedIn.",
+        "Unibiz: Conducted deep performance analysis of a heavy React application — identified memory leaks, raised issues with third-party library teams, and presented proof-of-concepts to product owners demonstrating measurable improvements.",
+        "Syncari: Implemented metadata-focused features across the full stack for a distributed data management platform integrating Salesforce, Zendesk, and HubSpot.",
+        "Organized the Food Code Sleep Hackathon, mentored new engineers, and led upskilling sessions on production-readiness for front-end applications."
       ],
       "city": "Bengaluru",
       "state": null,
@@ -102,17 +136,35 @@
     },
     {
       "name": "QBurst Technologies Pvt Ltd.",
-      "position": "Senior Software Engineer",
+      "position": "Senior Engineer",
+      "type": null,
+      "url": null,
+      "start_date": "2019-06-01",
+      "end_date": "2020-01-01",
+      "summary": "Promoted to Senior Engineer. Led full-stack development across multiple client projects and mentored junior engineers.",
+      "highlights": [
+        "Rocket Partners: Developed mobile + kiosk PWA applications for a retail supermarket chain, with micro-services bridging external vendors. Code quality commended by client top management.",
+        "Mile Auto: Built the Quote-to-Bind process for a pay-per-mile auto insurance portal (Vue.js), including a Porsche-branded variant. Handled Google Analytics integration, SEO optimization, and TISAX security assessment.",
+        "Pure Engage (Billing Revamp): Implemented a Hadoop-based ETL pipeline — collection jobs for periodic CDR fetch, Spark jobs for rating/billing/tax calculation, and Salesforce integration.",
+        "Won special mention in \"Game of Code\" internal hackathon. Completed GCP Architecture and TensorFlow specializations on Coursera."
+      ],
+      "city": "Calicut",
+      "state": null,
+      "country": "India"
+    },
+    {
+      "name": "QBurst Technologies Pvt Ltd.",
+      "position": "Software Engineer",
       "type": null,
       "url": null,
       "start_date": "2016-06-01",
-      "end_date": "2020-01-01",
-      "summary": "Led full-stack development, architectural design, and cross-functional communication for diverse projects, delivering robust web and API solutions.",
+      "end_date": "2019-05-01",
+      "summary": "Started career as a full-stack web developer. Rapid growth across diverse projects and technologies.",
       "highlights": [
-        "Engineered multiple Single Page Applications (SPAs) from inception using React, Angular, and Vue.js, adhering to industry best practices and delivering highly performant user interfaces.",
-        "Designed and implemented robust REST API endpoints with NodeJS, facilitating seamless integration across diverse microservices.",
-        "Contributed to critical architectural design phases for various projects, ensuring scalable and maintainable software solutions.",
-        "Fostered effective cross-functional collaboration and communication with diverse stakeholders, streamlining project workflows and resolving complex technical challenges."
+        "StayNTouch: Built features for a hotel property management system (Web + Mobile). Developed automation suites using Selenium with cross-browser testing, Jenkins CI, and SauceLabs integration. Refactored automation codebase to work as threads.",
+        "Anywhere Auctions: Created entire application modules from scratch in Angular for a real-time real estate auction platform with DocuSign integration and fraud detection.",
+        "Neo Trader: Implemented interactive candlestick, OHLC & line chart components using D3.js for an online commodity trading platform. Identified a critical memory leak across the application.",
+        "Blockchain POC (Concentrix): Built demo applications from zero showcasing identity management, smart contracts, shared ledger, and digital content storage on blockchain — delivered end-to-end from setup to client demo."
       ],
       "city": "Calicut",
       "state": null,
@@ -140,59 +192,108 @@
   "languages": [],
   "certificates": [
     {
+      "name": "Claude Code in Action",
+      "date": "2025-12-01",
+      "issuer": "Anthropic",
+      "url": null
+    },
+    {
+      "name": "Introduction to Claude Code",
+      "date": "2025-12-01",
+      "issuer": "Scrimba",
+      "url": null
+    },
+    {
+      "name": "Model Context Protocol for Leaders",
+      "date": "2025-12-01",
+      "issuer": "Vanderbilt University",
+      "url": null
+    },
+    {
+      "name": "Intro to Model Context Protocol (MCP)",
+      "date": "2026-02-01",
+      "issuer": "Scrimba",
+      "url": null
+    },
+    {
+      "name": "AI Fundamentals",
+      "date": "2026-02-01",
+      "issuer": "Google",
+      "url": null
+    },
+    {
+      "name": "AI for Brainstorming and Planning",
+      "date": "2026-02-01",
+      "issuer": "Google",
+      "url": null
+    },
+    {
+      "name": "Generative AI for Everyone",
+      "date": "2025-05-01",
+      "issuer": "DeepLearning.AI",
+      "url": null
+    },
+    {
+      "name": "Google Prompting Essentials",
+      "date": "2025-05-01",
+      "issuer": "Google",
+      "url": null
+    },
+    {
       "name": "TensorFlow in Practice Specialization",
-      "date": null,
+      "date": "2019-07-01",
       "issuer": "deeplearning.ai (Coursera)",
       "url": null
     },
     {
       "name": "Architecting with Google Cloud Platform Specialization",
-      "date": null,
-      "issuer": "Coursera",
+      "date": "2019-07-01",
+      "issuer": "Google (Coursera)",
       "url": null
     },
     {
       "name": "Deep Learning Specialization",
-      "date": null,
+      "date": "2019-02-01",
       "issuer": "deeplearning.ai (Coursera)",
       "url": null
     },
     {
       "name": "Machine Learning",
-      "date": null,
+      "date": "2018-11-01",
       "issuer": "Andrew Ng (Coursera)",
       "url": null
     }
   ],
   "skills": [
     {
+      "name": "AI & GenAI Tools",
+      "keywords": ["Claude Code", "Cursor", "Windsurf", "Roo Code", "MCP", "Google Gemini", "Generative AI"]
+    },
+    {
       "name": "Programming Languages",
-      "keywords": ["JavaScript", "Python", "Golang", "Java", "Bash"]
+      "keywords": ["TypeScript", "JavaScript", "Python", "Golang", "Java", "Bash"]
     },
     {
       "name": "Frameworks/Libraries",
       "keywords": [
         "React",
+        "Next.js",
         "React Native",
         "Redux",
         "Angular",
-        "Gatsby",
         "Vue.js",
+        "Gatsby",
         "Express",
         "NestJS"
       ]
     },
     {
-      "name": "Development Tools",
-      "keywords": ["Sublime", "VSCode", "IntelliJ", "nano"]
-    },
-    {
       "name": "Technologies",
-      "keywords": ["HTML5", "SCSS/LESS/CSS3", "nginx", "apache2"]
+      "keywords": ["Node.js", "HTML5", "SCSS/LESS/CSS3", "Module Federation", "WASM", "WebCodecs", "Docker", "nginx"]
     },
     {
-      "name": "Other Tools",
-      "keywords": ["Git", "Webpack", "Jest", "Vercel"]
+      "name": "Tools & Infrastructure",
+      "keywords": ["Git", "Webpack", "Jest", "Playwright", "CI/CD", "Vercel", "PaymentJS", "Fiserv"]
     }
   ],
   "interests": [],

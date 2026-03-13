@@ -16,9 +16,12 @@
     "build:production": "npm run check && npm run build && npm run compress",
     "optimize": "npm run build && npm run compress",
     "compress": "npx imagemin 'dist/**/*.{jpg,png,svg}' --out-dir=dist",
-    "clean": "rimraf dist node_modules"
+    "clean": "rimraf dist node_modules",
+    "sync:to-latex": "tsx scripts/sync-to-latex.ts",
+    "sync:from-latex": "tsx scripts/sync-from-latex.ts"
   },
   "devDependencies": {
+    "tsx": "^4.19.2",
     "@astrojs/check": "^0.9.4",
     "@astrojs/sitemap": "^3.5.0",
     "@astrojs/tailwind": "^6.0.2",
